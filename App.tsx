@@ -191,7 +191,7 @@ export default function App() {
       `${lang === 'cn' ? '联系电话' : 'Phone'}: ${phone}`,
       `${lang === 'cn' ? '咨询内容' : 'Message'}: ${message}`
     ].join('\n');
-    window.location.href = `mailto:MelodyW0416@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:sipbrush@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
   
   return (
