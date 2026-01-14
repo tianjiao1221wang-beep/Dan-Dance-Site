@@ -178,6 +178,23 @@ export default function App() {
     }
   };
 
+  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get('parentName') ?? '');
+    const childAge = String(formData.get('childAge') ?? '');
+    const phone = String(formData.get('phone') ?? '');
+    const message = String(formData.get('message') ?? '');
+    const subject = lang === 'cn' ? '丹·舞蹈学院咨询' : 'Dan Dance Academy Inquiry';
+    const body = [
+      `${lang === 'cn' ? '家长姓名' : 'Parent Name'}: ${name}`,
+      `${lang === 'cn' ? '孩子年龄' : "Child's Age"}: ${childAge}`,
+      `${lang === 'cn' ? '联系电话' : 'Phone'}: ${phone}`,
+      `${lang === 'cn' ? '咨询内容' : 'Message'}: ${message}`
+    ].join('\n');
+    window.location.href = `mailto:MelodyW0416@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <div className="relative">
       <Navbar lang={lang} setLang={setLang} onNav={scrollToSection} />
@@ -562,22 +579,22 @@ export default function App() {
           </div>
 
           <div className="lg:col-span-7">
-            <form className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12" onSubmit={(e) => { e.preventDefault(); alert(lang === 'cn' ? '咨询已收到，我们会尽快联系您。' : 'Inquiry received. We will contact you soon.'); }}>
+            <form className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12" onSubmit={handleContactSubmit}>
               <div className="space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.name[lang]}</label>
-                <input required type="text" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
+                <input name="parentName" required type="text" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
               </div>
               <div className="space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.childAge[lang]}</label>
-                <input required type="number" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
+                <input name="childAge" required type="number" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
               </div>
               <div className="md:col-span-2 space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.phone[lang]}</label>
-                <input required type="tel" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
+                <input name="phone" required type="tel" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
               </div>
               <div className="md:col-span-2 space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.message[lang]}</label>
-                <textarea rows={4} className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all resize-none font-light text-lg" placeholder="..."></textarea>
+                <textarea name="message" rows={4} className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all resize-none font-light text-lg" placeholder="..."></textarea>
               </div>
               <div className="md:col-span-2 pt-10">
                 <button type="submit" className="block-button bg-red w-full md:w-auto text-sm uppercase tracking-[0.4em] font-bold py-6 px-20">
