@@ -546,7 +546,7 @@ export default function App() {
                  </div>
                  <div className="space-y-2">
                    <p className="text-[11px] uppercase tracking-widest opacity-30 font-bold text-[var(--mineral-red)]">{lang === 'cn' ? '咨询专线' : 'Phone'}</p>
-                   <p className="text-lg font-medium">+1 (555) 888-9999</p>
+                   <p className="text-lg font-medium">+1 (217) 220-5246</p>
                  </div>
                </div>
             </div>
