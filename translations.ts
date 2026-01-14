@@ -6,6 +6,7 @@ export const translations = {
     home: { cn: '首页', en: 'Home' },
     about: { cn: '学馆哲学', en: 'Philosophy' },
     classes: { cn: '舞艺课程', en: 'Classes' },
+    instructors: { cn: '导师风采', en: 'Instructors' },
     performances: { cn: '舞台盛典', en: 'Performances' },
     students: { cn: '舞者成长', en: 'Student Journey' },
     events: { cn: '艺文活动', en: 'Events' },
@@ -28,6 +29,13 @@ export const translations = {
     chineseDance: { cn: '中国舞 (古典/民族)', en: 'Chinese Dance (Classical/Folk)' },
     kpop: { cn: '流行舞 (K-pop)', en: 'Pop Dance (K-pop)' },
     ageGroups: { cn: '适龄阶段：4岁 - 青少年', en: 'Ages: 4 - Teens' },
+  },
+  instructors: {
+    title: { cn: '师资介绍', en: 'Instructor Introductions' },
+    subtitle: {
+      cn: '以传统为根，以创新为翼，带领学员走向专业舞台。',
+      en: 'Rooted in tradition and powered by innovation, guiding students toward the professional stage.'
+    }
   },
   contact: {
     title: { cn: '与我们联络', en: 'Inquiry & Contact' },
