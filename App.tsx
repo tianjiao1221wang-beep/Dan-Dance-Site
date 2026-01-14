@@ -144,9 +144,9 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
       <div className="space-y-8">
         <h4 className="text-[11px] uppercase tracking-[0.4em] font-semibold opacity-30 text-[var(--lapis-blue)]">{lang === 'cn' ? '快速导航' : 'Explore'}</h4>
         <div className="flex flex-col gap-5">
-          {['about', 'classes', 'events', 'contact'].map(item => (
-            <button key={item} onClick={() => onNav(item)} className="text-sm opacity-50 hover:opacity-100 hover:text-[var(--lapis-blue)] transition-all capitalize text-left">
-              {item}
+     {(['about', 'classes', 'instructors', 'events', 'contact'] as const).map(item => (
+            <button key={item} onClick={() => onNav(item)} className="text-sm opacity-50 hover:opacity-100 hover:text-[var(--lapis-blue)] transition-all text-left">
+              {translations.nav[item][lang]}
             </button>
           ))}
         </div>
@@ -319,6 +319,76 @@ export default function App() {
                       {lang === 'cn' ? '咨询预约 / Book Now' : 'Inquire Now'}
                     </button>
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      {/* Instructors Section */}
+      <Section id="instructors" className="bg-white">
+        <div className="max-w-6xl mx-auto space-y-20">
+          <div className="text-center space-y-6">
+            <h4 className="text-[11px] uppercase tracking-[0.6em] opacity-40 font-bold text-[var(--mineral-red)]">
+              {lang === 'cn' ? '导师团队' : 'Faculty'}
+            </h4>
+            <h2 className="text-5xl md:text-6xl font-serif text-[var(--mineral-red)]">{translations.instructors.title[lang]}</h2>
+            <p className="text-base md:text-lg opacity-60 font-light max-w-3xl mx-auto">
+              {translations.instructors.subtitle[lang]}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                name: lang === 'cn' ? '李清韵' : 'Lina Qingyun',
+                role: lang === 'cn' ? '古典舞导师 · 编导' : 'Classical Lead · Choreographer',
+                desc: lang === 'cn'
+                  ? '毕业于北京舞蹈学院，擅长敦煌舞与汉唐古典舞，曾担任多场大型舞剧编导。'
+                  : 'Beijing Dance Academy graduate specializing in Dunhuang and Han-Tang classical dance, with choreography credits for major productions.',
+                color: 'var(--mineral-red)',
+                img: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800'
+              },
+              {
+                name: lang === 'cn' ? '周以辰' : 'Zhou Yichen',
+                role: lang === 'cn' ? '流行舞导师 · 舞台指导' : 'Pop Dance · Stage Coach',
+                desc: lang === 'cn'
+                  ? '10年舞台经验，擅长K-pop与街舞融合训练，帮助学员提升自信与舞台表现力。'
+                  : 'A decade of stage experience, blending K-pop and street styles to build confidence and performance presence.',
+                color: 'var(--lapis-blue)',
+                img: 'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=800'
+              },
+              {
+                name: lang === 'cn' ? '韩若璟' : 'Han Ruojing',
+                role: lang === 'cn' ? '舞台艺术导师 · 形体训练' : 'Stage Arts · Body Conditioning',
+                desc: lang === 'cn'
+                  ? '国家一级演员，专注舞台礼仪、形体塑造与情绪表达训练。'
+                  : 'National first-class performer focused on stage etiquette, body shaping, and emotional expression training.',
+                color: 'var(--sandstone)',
+                img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800'
+              }
+            ].map((instructor) => (
+              <div key={instructor.name} className="group rounded-[3rem] overflow-hidden bg-white shadow-xl border border-[var(--lapis-blue)]/5 flex flex-col">
+                <div className="h-80 overflow-hidden relative">
+                  <img src={instructor.img} className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" alt={instructor.name} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                  <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
+                    <div>
+                      <p className="text-white text-2xl font-serif">{instructor.name}</p>
+                      <p className="text-white/70 text-xs uppercase tracking-[0.4em] mt-2">{instructor.role}</p>
+                    </div>
+                    <div className="w-12 h-12 rounded-full bg-white/20 border border-white/30 flex items-center justify-center backdrop-blur-sm">
+                      <Sparkles size={20} className="text-white/70" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-10 space-y-6 flex-grow">
+                  <div className="w-16 h-1 rounded-full" style={{ backgroundColor: `${instructor.color}40` }}></div>
+                  <p className="text-base opacity-60 leading-loose font-light">{instructor.desc}</p>
+                  <button onClick={() => scrollToSection('contact')} className="nav-link py-3 px-8 text-xs font-bold" style={{ color: instructor.color, backgroundColor: `${instructor.color}10` }}>
+                    {lang === 'cn' ? '预约试课' : 'Book a Trial'}
+                  </button>
                 </div>
               </div>
             ))}
