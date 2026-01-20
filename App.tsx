@@ -379,7 +379,7 @@ const galleryImages = [
                   As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
                   She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.`.trim(),
                 color: 'var(--mineral-red)',
-                img: '/images/instructor-dan.jpg'
+                img: 'public/images/instructor-dan.jpg'
               },
               {
                 id: 'angel-zhao',
@@ -395,7 +395,7 @@ const galleryImages = [
                   She brings over 6 years of teaching experience, working with dancers of different ages and levels. She has participated in numerous stage performances and dance competitions from childhood through adulthood. In 2024, she performed in the opening show of a Chicago Bulls NBA game, adding large-scale commercial stage experience to her background.
                   In addition to dance, Angel has an extensive runway and print modeling background, including participation in the International Fashion Supermodel (IFSM) Hollywood show in 2024. She also holds national pageant titles, including 1st Princess of Miss Chinatown Chicago and 4th Princess at Miss Chinatown USA.`.trim(),
                 color: 'var(--lapis-blue)',
-                img: '/images/instructor-angel.jpg'
+                img: 'public/images/instructor-angel.jpg'
               },
               {
                 id: 'Fengyuan-liu',
