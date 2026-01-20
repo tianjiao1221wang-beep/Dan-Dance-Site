@@ -359,16 +359,16 @@ export default function App() {
             {[
               {
                 name: lang === 'cn' ? '吴丹' : 'Dan Wu',
-                role: lang === 'cn' ? '中国舞主教 · 创始人' : 'Classical Lead · Founder',
+                role: lang === 'cn' ? '中国舞主教 · 创始人' : 'CHINESE DANCE TEACHING LEAD · FOUNDER',
                 desc: lang === 'cn'
-                  ? '毕业于首都师范大学，获学士学位。自四岁起学习中国舞基本功，大学期间专注于中国舞与舞台表演及文化表达的融合。
+                  ? `毕业于首都师范大学，获学士学位。自四岁起学习中国舞基本功，大学期间专注于中国舞与舞台表演及文化表达的融合。
                   曾荣获中国舞蹈界最高奖项之一——荷花奖，并多次登上中国官方春节联欢晚会舞台；同时参与河北空军某部文艺慰问演出志愿活动。
                   少年时期参演《小蝌蚪》《闪闪的红星》《雨中舞蹈》等多项节目，获中央电视台“最受欢迎演员”称号；主演作品《渔家乐》荣获省级奖项。
-                  曾被多所重点舞蹈院校录取，包括首都师范大学、东北师范大学。成为一名致力于传承中国舞艺术的教师，始终是她心中最坚定的梦想'
-                  : 'Graduated from Capital Normal University with a bachelor’s degree. Dan began studying Chinese dance fundamentals at the age of four and later focused on integrating Chinese dance with stage performance and cultural expression in university.
+                  曾被多所重点舞蹈院校录取，包括首都师范大学、东北师范大学。成为一名致力于传承中国舞艺术的教师，始终是她心中最坚定的梦想`.trim()
+                  : `Graduated from Capital Normal University with a bachelor’s degree. Dan began studying Chinese dance fundamentals at the age of four and later focused on integrating Chinese dance with stage performance and cultural expression in university.
                   She has received the prestigious Lotus Award and performed multiple times in China’s official Spring Festival Gala. She also volunteered for performance tours with the Hebei Air Force District.
-             As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
-             She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.',
+                  As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
+                  She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.`.trim(),
                 color: 'var(--mineral-red)',
                 img: '"C:\Users\TJ\Downloads\Dan Dance Website\image01.jpg"'
               },
@@ -376,23 +376,39 @@ export default function App() {
                 name: lang === 'cn' ? 'Angel Zhao' : 'Angel Zhao',
                 role: lang === 'cn' ? 'K-POP｜爵士｜Hip Hop｜拉丁舞导师' : 'K-POP|JAZZ|HIP HOP|LATIN DANCE INSTRUCTOR',
                 desc: lang === 'cn'
-                  ? 'Angel 长期从事舞蹈表演与教学，舞种涵盖 K-POP、Jazz、Hip Hop 及拉丁舞，并持有拉丁舞银牌等级认证。
-             她自幼开始系统学习拉丁舞，随后逐步接触并深入学习爵士舞与 Hip Hop，并因个人兴趣进一步拓展了 K-POP 舞蹈。在大学期间，Angel 组建并带领舞团，策划、拍摄了多支专业舞蹈 MV，并在 Midwest 地区 K-POP 赛事中多次获得第一名。
-             她拥有 6 年以上的舞蹈教学经验，曾教授不同年龄层与不同基础水平的学生。从童年到成年，Angel 持续参与各类舞台演出与舞蹈赛事。2024 年，她参与了芝加哥公牛队（Chicago Bulls）NBA 比赛的开场表演，积累了大型商业舞台的演出经验。
-             除舞蹈领域外，Angel 亦拥有丰富的 T 台及平面模特经验，并于 2024 年参与好莱坞 International Fashion Supermodel（IFSM）时装秀。此外，她曾获得 Miss Chinatown Chicago 第一公主，并在 Miss Chinatown USA 全国赛中获得第四公主 的头衔。'
-                  : 'Angel Zhao is a multi-style dancer and instructor trained in K-POP, Jazz, Hip Hop, and Latin dance, and holds a Silver Medal certification in Latin. 
-             She began her dance training at a young age with Latin dance, later expanding into Jazz and Hip Hop, and eventually focusing on K-POP.During her university years, Angel founded and led a dance team, producing multiple professional dance MVs and earning multiple 1st Place titles at Midwest K-POP competitions. 
-             She brings over 6 years of teaching experience, working with dancers of different ages and levels.She has participated in numerous stage performances and dance competitions from childhood through adulthood. In 2024, she performed in the opening show of a Chicago Bulls NBA game, adding large-scale commercial stage experience to her background.
-             In addition to dance, Angel has an extensive runway and print modeling background, including participation in the International Fashion Supermodel (IFSM) Hollywood show in 2024. She also holds national pageant titles, including 1st Princess of Miss Chinatown Chicago and 4th Princess at Miss Chinatown USA.',
-                color: 'var(--lapis-blue)',
+                   ? `Angel 长期从事舞蹈表演与教学，舞种涵盖 K-POP、Jazz、Hip Hop 及拉丁舞，并持有拉丁舞银牌等级认证。
+                  她自幼开始系统学习拉丁舞，随后逐步接触并深入学习爵士舞与 Hip Hop，并因个人兴趣进一步拓展了 K-POP 舞蹈。在大学期间，Angel 组建并带领舞团，策划、拍摄了多支专业舞蹈 MV，并在 Midwest 地区 K-POP 赛事中多次获得第一名。
+                  她拥有 6 年以上的舞蹈教学经验，曾教授不同年龄层与不同基础水平的学生。从童年到成年，Angel 持续参与各类舞台演出与舞蹈赛事。2024 年，她参与了芝加哥公牛队（Chicago Bulls）NBA 比赛的开场表演，积累了大型商业舞台的演出经验。
+                  除舞蹈领域外，Angel 亦拥有丰富的 T 台及平面模特经验，并于 2024 年参与好莱坞 International Fashion Supermodel（IFSM）时装秀。此外，她曾获得 Miss Chinatown Chicago 第一公主，并在 Miss Chinatown USA 全国赛中获得第四公主 的头衔。`.trim()
+                  : `Angel Zhao is a multi-style dancer and instructor trained in K-POP, Jazz, Hip Hop, and Latin dance, and holds a Silver Medal certification in Latin. 
+                  She began her dance training at a young age with Latin dance, later expanding into Jazz and Hip Hop, and eventually focusing on K-POP. During her university years, Angel founded and led a dance team, producing multiple professional dance MVs and earning multiple 1st Place titles at Midwest K-POP competitions. 
+                  She brings over 6 years of teaching experience, working with dancers of different ages and levels. She has participated in numerous stage performances and dance competitions from childhood through adulthood. In 2024, she performed in the opening show of a Chicago Bulls NBA game, adding large-scale commercial stage experience to her background.
+                  In addition to dance, Angel has an extensive runway and print modeling background, including participation in the International Fashion Supermodel (IFSM) Hollywood show in 2024. She also holds national pageant titles, including 1st Princess of Miss Chinatown Chicago and 4th Princess at Miss Chinatown USA.`.trim(),
                 img: '"C:\Users\TJ\Downloads\Dan Dance Website\Weixin Image_20260119215847_12_93.jpg"'
               },
               {
-                name: lang === 'cn' ? '韩若璟' : 'Han Ruojing',
-                role: lang === 'cn' ? '舞台艺术导师 · 形体训练' : 'Stage Arts · Body Conditioning',
+                name: lang === 'cn' ? '刘子毓' : 'Ziyu Liu',
+                role: lang === 'cn' ? '中国舞助教' : 'CHINESE DANCE TEACHING ASSISTANT',
                 desc: lang === 'cn'
-                  ? '国家一级演员，专注舞台礼仪、形体塑造与情绪表达训练。'
-                  : 'National first-class performer focused on stage etiquette, body shaping, and emotional expression training.',
+                 ? `5岁开始学习中国舞，小学至高中作为北京金帆舞蹈团核心成员，曾获4届北京市舞蹈艺术节金奖及荷花奖、第30届加泰罗尼亚国际舞蹈大赛最佳表演奖、CCTV全国舞蹈大赛最佳作品奖等重要奖项。 
+                 演出足迹跨越艺术交流与文化传播的广阔舞台：曾参与中共中央国务院春节团拜会演出，两次受邀赴爱丁堡艺术节演出，并先后出访俄罗斯、韩国、澳大利亚、新加坡等多国，在赤塔中学文化交流、首尔北京建交20周年庆典、澳大利亚猴年春晚、新加坡国立小学艺术交流等重要场合展现中国舞蹈魅力。 
+                 本科就读于加州大学戴维斯分校期间，担任校中国舞蹈团副团长及编舞，负责日常排练、作品编创与团队管理。带领舞团连续三年夺得加州大学戴维斯分校舞蹈大赛冠军，并参与华人春晚演出、组织舞蹈专场演出等活动，始终致力于以舞蹈传承与弘扬中国传统文化。`.trim()
+                  : ` Starting her journey in Chinese dance at the age of five, Ariel was a core member of the Beijing Jinfan Dance Troupe throughout her elementary and high school years. Her exceptional talent has been recognized with top honors, including the Lotus Award (China’s highest dance accolade), four Gold Awards at the Beijing Student Art Festival, the Best Performance Award at the 30th Catalonia International Dance Competition, and the Best Work Award at the CCTV National Dance Competition. 
+                  Ariel possesses extensive stage experience in high-level cultural exchanges. She has performed at the National Spring Festival Group Greeting for state leaders and was invited twice to the renowned Edinburgh Festival Fringe. Her artistic footprint spans Russia, South Korea, Australia, and Singapore, featuring prominent roles in events such as the 20th Anniversary of Seoul-Beijing Diplomatic Relations and the Australian Year of the Monkey Spring Gala. 
+                  During Ariel's undergraduate studies at the University of California, Davis, she served as Vice President and Choreographer of the Chinese Dance Troupe. Combining management with artistry, she led her team to three consecutive championships at the UC Davis Dance Competition. Dedicated to the inheritance of Chinese culture, she continues to bring her expertise in choreography, rehearsal management, and performance to the stage. `.trim(),
+                color: 'var(--sandstone)',
+                img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800'
+             },
+              {
+                name: lang === 'cn' ? '刘子毓' : 'Ziyu Liu',
+                role: lang === 'cn' ? '中国舞助教' : 'CHINESE DANCE TEACHING ASSISTANT',
+                desc: lang === 'cn'
+                 ? `5岁开始学习中国舞，小学至高中作为北京金帆舞蹈团核心成员，曾获4届北京市舞蹈艺术节金奖及荷花奖、第30届加泰罗尼亚国际舞蹈大赛最佳表演奖、CCTV全国舞蹈大赛最佳作品奖等重要奖项。 
+                 演出足迹跨越艺术交流与文化传播的广阔舞台：曾参与中共中央国务院春节团拜会演出，两次受邀赴爱丁堡艺术节演出，并先后出访俄罗斯、韩国、澳大利亚、新加坡等多国，在赤塔中学文化交流、首尔北京建交20周年庆典、澳大利亚猴年春晚、新加坡国立小学艺术交流等重要场合展现中国舞蹈魅力。 
+                 本科就读于加州大学戴维斯分校期间，担任校中国舞蹈团副团长及编舞，负责日常排练、作品编创与团队管理。带领舞团连续三年夺得加州大学戴维斯分校舞蹈大赛冠军，并参与华人春晚演出、组织舞蹈专场演出等活动，始终致力于以舞蹈传承与弘扬中国传统文化。`.trim()
+                  : ` Starting her journey in Chinese dance at the age of five, Ariel was a core member of the Beijing Jinfan Dance Troupe throughout her elementary and high school years. Her exceptional talent has been recognized with top honors, including the Lotus Award (China’s highest dance accolade), four Gold Awards at the Beijing Student Art Festival, the Best Performance Award at the 30th Catalonia International Dance Competition, and the Best Work Award at the CCTV National Dance Competition. 
+                  Ariel possesses extensive stage experience in high-level cultural exchanges. She has performed at the National Spring Festival Group Greeting for state leaders and was invited twice to the renowned Edinburgh Festival Fringe. Her artistic footprint spans Russia, South Korea, Australia, and Singapore, featuring prominent roles in events such as the 20th Anniversary of Seoul-Beijing Diplomatic Relations and the Australian Year of the Monkey Spring Gala. 
+                  During Ariel's undergraduate studies at the University of California, Davis, she served as Vice President and Choreographer of the Chinese Dance Troupe. Combining management with artistry, she led her team to three consecutive championships at the UC Davis Dance Competition. Dedicated to the inheritance of Chinese culture, she continues to bring her expertise in choreography, rehearsal management, and performance to the stage. `.trim(),
                 color: 'var(--sandstone)',
                 img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800'
               }
