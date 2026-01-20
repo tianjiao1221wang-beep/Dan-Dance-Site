@@ -137,8 +137,8 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
         </div>
         <p className="text-sm opacity-60 leading-loose font-light max-w-sm">
           {lang === 'cn' 
-            ? '融合敦煌壁画的千年雅韵与现代舞步。在这里，我们不仅教授技艺，更在塑造充满文化内涵的灵魂。' 
-            : 'Merging the ancient elegance of Dunhuang murals with modern steps. We do not just teach technique; we shape souls filled with cultural depth.'}
+            ? '融合中国舞的千年雅韵与现代舞步。在这里，我们不仅教授技艺，更在塑造充满文化内涵的灵魂。' 
+            : 'Merging the ancient elegance of Chinese Dance with modern steps. We do not just teach technique; we shape souls filled with cultural depth.'}
         </p>
       </div>
       <div className="space-y-8">
