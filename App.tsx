@@ -170,6 +170,14 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
 
 export default function App() {
   const [lang, setLang] = useState<Language>('cn');
+const galleryImages = [
+    { src: '/images/gallery-1.jpg', span: 'col-span-2 row-span-2' },
+    { src: '/images/gallery-2.jpg', span: 'col-span-1 row-span-1' },
+    { src: '/images/gallery-3.jpg', span: 'col-span-1 row-span-1' },
+    { src: '/images/gallery-4.jpg', span: 'col-span-2 row-span-1' },
+    { src: '/images/gallery-5.jpg', span: 'col-span-1 row-span-1' },
+    { src: '/images/gallery-6.jpg', span: 'col-span-1 row-span-1' }
+  ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -204,7 +212,7 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 opacity-60"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 opacity-90"></div>
           <img 
-            src="https://images.unsplash.com/photo-1547153760-18fc86324498?q=80&w=2000&auto=format&fit=crop" 
+             src="/images/hero.jpg"
             alt="Dunhuang Aesthetic" 
             className="w-full h-full object-cover opacity-[0.25] filter grayscale-[0.1] sepia-[0.2]" 
           />
@@ -271,14 +279,14 @@ export default function App() {
         <div className="lg:col-span-7 relative">
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-6 pt-12">
-               <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=1200" className="rounded-[3.5rem] h-[500px] w-full object-cover shadow-2xl" alt="Dance Art" />
+               <img src="/images/about-1.jpg" className="rounded-[3.5rem] h-[500px] w-full object-cover shadow-2xl" alt="Dance Art" />
                <div className="rounded-[2.5rem] h-[250px] w-full bg-soft-blue flex items-center justify-center p-8 text-center italic opacity-70 font-serif border border-[var(--lapis-blue)]/10 text-[var(--lapis-blue)]">
                   {lang === 'cn' ? '“舞如丹青，身如墨笔”' : '"Dance like a painting, the body as the ink brush"'}
                </div>
             </div>
             <div className="space-y-6">
-               <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200" className="rounded-[3.5rem] h-[400px] w-full object-cover shadow-xl" alt="Stage Moment" />
-               <img src="https://images.unsplash.com/photo-1545624442-a08365113d50?q=80&w=1200" className="rounded-[2.5rem] h-[350px] w-full object-cover shadow-lg opacity-90 filter brightness-[1.1]" alt="Dunhuang Step" />
+               <img src="/images/about-2.jpg" className="rounded-[3.5rem] h-[400px] w-full object-cover shadow-xl" alt="Stage Moment" />
+               <img src="/images/about-3.jpg" className="rounded-[2.5rem] h-[350px] w-full object-cover shadow-lg opacity-90 filter brightness-[1.1]" alt="Dunhuang Step" />
             </div>
           </div>
         </div>
@@ -300,21 +308,21 @@ export default function App() {
                 title: translations.classes.chineseDance[lang], 
                 desc: lang === 'cn' ? '涵盖古典舞、敦煌舞与民族民间。在舞韵中培养深厚文化底蕴与优雅身姿。' : 'Encompassing Classical, Dunhuang, and Folk. Cultivate cultural depth and graceful posture.',
                 color: 'var(--mineral-red)',
-                img: 'https://images.unsplash.com/photo-1545624442-a08365113d50?q=80&w=800'
+                img: '/images/class-chinese.jpg'
               },
               { 
                 icon: <Camera size={28} />, 
                 title: translations.classes.kpop[lang], 
                 desc: lang === 'cn' ? '前沿流行编舞。提升舞台表现力、爆发力与身体协调性，展现现代自信。' : 'Cutting-edge pop choreography. Enhance stage presence, power, and coordination for modern confidence.',
                 color: 'var(--lapis-blue)',
-                img: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800'
+                img: '/images/class-kpop.jpg'
               },
               { 
                 icon: <Award size={28} />, 
                 title: lang === 'cn' ? '专业集训与比赛' : 'Advanced & Elite', 
                 desc: lang === 'cn' ? '为寻求专业突破的学员设计的晋阶课程，接轨国内外权威赛事与等级考试。' : 'Advanced courses for professional breakthroughs, connecting to authoritative dance events.',
                 color: 'var(--sandstone)',
-                img: 'https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=800'
+                img: '/images/class-elite.jpg'
               }
             ].map((cls, i) => (
               <div key={i} className="museum-card group h-full flex flex-col bg-white overflow-hidden shadow-sm">
@@ -371,7 +379,7 @@ export default function App() {
                   As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
                   She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.`.trim(),
                 color: 'var(--mineral-red)',
-                img: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=1200&auto=format&fit=crop'
+                img: '/images/instructor-dan.jpg'
               },
               {
                 id: 'angel-zhao',
@@ -387,7 +395,7 @@ export default function App() {
                   She brings over 6 years of teaching experience, working with dancers of different ages and levels. She has participated in numerous stage performances and dance competitions from childhood through adulthood. In 2024, she performed in the opening show of a Chicago Bulls NBA game, adding large-scale commercial stage experience to her background.
                   In addition to dance, Angel has an extensive runway and print modeling background, including participation in the International Fashion Supermodel (IFSM) Hollywood show in 2024. She also holds national pageant titles, including 1st Princess of Miss Chinatown Chicago and 4th Princess at Miss Chinatown USA.`.trim(),
                 color: 'var(--lapis-blue)',
-                img: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=1200&auto=format&fit=crop'
+                img: '/images/instructor-angel.jpg'
               },
               {
                 id: 'Fengyuan-liu',
@@ -401,7 +409,7 @@ export default function App() {
                   Ariel possesses extensive stage experience in high-level cultural exchanges. She has performed at the National Spring Festival Group Greeting for state leaders and was invited twice to the renowned Edinburgh Festival Fringe. Her artistic footprint spans Russia, South Korea, Australia, and Singapore, featuring prominent roles in events such as the 20th Anniversary of Seoul-Beijing Diplomatic Relations and the Australian Year of the Monkey Spring Gala. 
                   During Ariel's undergraduate studies at the University of California, Davis, she served as Vice President and Choreographer of the Chinese Dance Troupe. Combining management with artistry, she led her team to three consecutive championships at the UC Davis Dance Competition. Dedicated to the inheritance of Chinese culture, she continues to bring her expertise in choreography, rehearsal management, and performance to the stage. `.trim(),
                 color: 'var(--sandstone)',
-                img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop'
+                img: '/images/instructor-fengyuan.jpg'
               },
               {
                 id: 'ziyu-liu',
@@ -415,7 +423,7 @@ export default function App() {
                   Ariel possesses extensive stage experience in high-level cultural exchanges. She has performed at the National Spring Festival Group Greeting for state leaders and was invited twice to the renowned Edinburgh Festival Fringe. Her artistic footprint spans Russia, South Korea, Australia, and Singapore, featuring prominent roles in events such as the 20th Anniversary of Seoul-Beijing Diplomatic Relations and the Australian Year of the Monkey Spring Gala. 
                   During Ariel's undergraduate studies at the University of California, Davis, she served as Vice President and Choreographer of the Chinese Dance Troupe. Combining management with artistry, she led her team to three consecutive championships at the UC Davis Dance Competition. Dedicated to the inheritance of Chinese culture, she continues to bring her expertise in choreography, rehearsal management, and performance to the stage. `.trim(),
                 color: 'var(--sandstone)',
-                 img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200&auto=format&fit=crop'
+                 img: '/images/instructor-ziyu.jpg'
                }
             }
             ].map((instructor) => (
@@ -457,18 +465,10 @@ export default function App() {
             "{lang === 'cn' ? '聚光灯下的每一刻，都是汗水的完美回响。' : 'Every moment under the spotlight is the perfect echo of hard work.'}"
           </p>
         </div>
-        
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { id: 453, span: 'col-span-2 row-span-2' },
-            { id: 454, span: 'col-span-1 row-span-1' },
-            { id: 455, span: 'col-span-1 row-span-1' },
-            { id: 456, span: 'col-span-2 row-span-1' },
-            { id: 457, span: 'col-span-1 row-span-1' },
-            { id: 458, span: 'col-span-1 row-span-1' }
-          ].map((img, i) => (
+           {galleryImages.map((img, i) => (
             <div key={i} className={`rounded-[3rem] overflow-hidden relative group ${img.span} h-full min-h-[300px] shadow-2xl`}>
-              <img src={`https://picsum.photos/id/${img.id}/1200/1000`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter brightness-[0.85] grayscale-[0.2]" alt="Performance Img" />
+              <img src={img.src} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter brightness-[0.85] grayscale-[0.2]" alt="Performance Img" />
               <div className="absolute inset-0 bg-[var(--lapis-blue)]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[4px]">
                  <Star className="text-white opacity-60 absolute top-8 right-8" size={24} />
                  <span className="text-white text-[11px] uppercase tracking-[0.5em] border border-white/40 px-8 py-4 rounded-full font-bold">Showcase</span>
@@ -489,17 +489,17 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-32">
             {[
               { 
-                name: 'Chloe', 
+                name: 'Norah', 
                 age: 9, 
                 quote: lang === 'cn' ? '从最初的胆怯到如今舞台上的自信谢幕，舞蹈不仅塑造了她的体态，更给予了她坚韧的内心。' : 'From initial shyness to confident curtain calls, dance has shaped not just her posture, but her resilient heart.',
-                img: 'https://picsum.photos/id/64/800/800',
+                img: '/images/student-norah.jpg',
                 color: 'var(--mineral-red)'
               },
               { 
-                name: 'Kevin', 
+                name: 'Jethro', 
                 age: 12, 
                 quote: lang === 'cn' ? '在汗水中找到节奏，在音乐中发现自我。对他而言，每一个节拍都是通往未来的台阶。' : 'Finding rhythm in sweat, discovering self in music. For him, every beat is a step toward the future.',
-                img: 'https://picsum.photos/id/65/800/800',
+                img: '/images/student-jethero.jpg',
                 color: 'var(--lapis-blue)'
               }
             ].map((story, i) => (
@@ -536,8 +536,8 @@ export default function App() {
             <div className="absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-[1px] bg-[var(--lapis-blue)]/10 hidden lg:block"></div>
             
             {[
-              { date: '2024.12', title: lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream', desc: lang === 'cn' ? '将千年壁画搬上现代舞台，一场穿越时空的沉浸式艺术盛宴。' : 'Bringing thousand-year-old murals to the modern stage in an immersive artistic feast.', img: 'https://images.unsplash.com/photo-1545624442-a08365113d50?q=80&w=1200', color: 'var(--mineral-red)' },
-              { date: '2025.03', title: lang === 'cn' ? '春季大师集训营' : 'Spring Master Class', desc: lang === 'cn' ? '特邀业内名师亲临指导，探索身体表达的无限可能与技艺巅峰。' : 'Invited masters guide students to explore infinite possibilities of expression and skill.', img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200', color: 'var(--lapis-blue)' }
+              { date: '2024.12', title: lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream', desc: lang === 'cn' ? '将千年壁画搬上现代舞台，一场穿越时空的沉浸式艺术盛宴。' : 'Bringing thousand-year-old murals to the modern stage in an immersive artistic feast.', img: '/images/event-1.jpg', color: 'var(--mineral-red)' },
+              { date: '2025.03', title: lang === 'cn' ? '春季大师集训营' : 'Spring Master Class', desc: lang === 'cn' ? '特邀业内名师亲临指导，探索身体表达的无限可能与技艺巅峰。' : 'Invited masters guide students to explore infinite possibilities of expression and skill.', img: '/images/event-2.jpg', color: 'var(--lapis-blue)' }
             ].map((ev, i) => (
               <div key={i} className={`flex flex-col lg:flex-row items-center gap-20 ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
                 <div className={`lg:w-1/2 ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'} space-y-8`}>
