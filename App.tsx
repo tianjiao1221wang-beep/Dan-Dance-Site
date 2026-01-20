@@ -361,31 +361,31 @@ export default function App() {
                 name: lang === 'cn' ? '吴丹' : 'Dan Wu',
                 role: lang === 'cn' ? '中国舞主教 · 创始人' : 'Classical Lead · Founder',
                 desc: lang === 'cn'
-                  ? '毕业于首都师范大学，获学士学位。自四岁起学习中国舞基本功，大学期间专注于中国舞与舞台表演及文化表达的融合。
+                  ? `毕业于首都师范大学，获学士学位。自四岁起学习中国舞基本功，大学期间专注于中国舞与舞台表演及文化表达的融合。
                   曾荣获中国舞蹈界最高奖项之一——荷花奖，并多次登上中国官方春节联欢晚会舞台；同时参与河北空军某部文艺慰问演出志愿活动。
                   少年时期参演《小蝌蚪》《闪闪的红星》《雨中舞蹈》等多项节目，获中央电视台“最受欢迎演员”称号；主演作品《渔家乐》荣获省级奖项。
-                  曾被多所重点舞蹈院校录取，包括首都师范大学、东北师范大学。成为一名致力于传承中国舞艺术的教师，始终是她心中最坚定的梦想'
-                  : 'Graduated from Capital Normal University with a bachelor’s degree. Dan began studying Chinese dance fundamentals at the age of four and later focused on integrating Chinese dance with stage performance and cultural expression in university.
+                  曾被多所重点舞蹈院校录取，包括首都师范大学、东北师范大学。成为一名致力于传承中国舞艺术的教师，始终是她心中最坚定的梦想`.trim()
+                  : `Graduated from Capital Normal University with a bachelor’s degree. Dan began studying Chinese dance fundamentals at the age of four and later focused on integrating Chinese dance with stage performance and cultural expression in university.
                   She has received the prestigious Lotus Award and performed multiple times in China’s official Spring Festival Gala. She also volunteered for performance tours with the Hebei Air Force District.
-             As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
-             She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.',
+                  As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
+                  She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.`.trim(),
                 color: 'var(--mineral-red)',
-                img: '"C:\Users\TJ\Downloads\Dan Dance Website\image01.jpg"'
+                img: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=1200'
               },
               {
                 name: lang === 'cn' ? 'Angel Zhao' : 'Angel Zhao',
                 role: lang === 'cn' ? 'K-POP｜爵士｜Hip Hop｜拉丁舞导师' : 'K-POP|JAZZ|HIP HOP|LATIN DANCE INSTRUCTOR',
                 desc: lang === 'cn'
-                  ? 'Angel 长期从事舞蹈表演与教学，舞种涵盖 K-POP、Jazz、Hip Hop 及拉丁舞，并持有拉丁舞银牌等级认证。
-             她自幼开始系统学习拉丁舞，随后逐步接触并深入学习爵士舞与 Hip Hop，并因个人兴趣进一步拓展了 K-POP 舞蹈。在大学期间，Angel 组建并带领舞团，策划、拍摄了多支专业舞蹈 MV，并在 Midwest 地区 K-POP 赛事中多次获得第一名。
-             她拥有 6 年以上的舞蹈教学经验，曾教授不同年龄层与不同基础水平的学生。从童年到成年，Angel 持续参与各类舞台演出与舞蹈赛事。2024 年，她参与了芝加哥公牛队（Chicago Bulls）NBA 比赛的开场表演，积累了大型商业舞台的演出经验。
-             除舞蹈领域外，Angel 亦拥有丰富的 T 台及平面模特经验，并于 2024 年参与好莱坞 International Fashion Supermodel（IFSM）时装秀。此外，她曾获得 Miss Chinatown Chicago 第一公主，并在 Miss Chinatown USA 全国赛中获得第四公主 的头衔。'
-                  : 'Angel Zhao is a multi-style dancer and instructor trained in K-POP, Jazz, Hip Hop, and Latin dance, and holds a Silver Medal certification in Latin. 
-             She began her dance training at a young age with Latin dance, later expanding into Jazz and Hip Hop, and eventually focusing on K-POP.During her university years, Angel founded and led a dance team, producing multiple professional dance MVs and earning multiple 1st Place titles at Midwest K-POP competitions. 
-             She brings over 6 years of teaching experience, working with dancers of different ages and levels.She has participated in numerous stage performances and dance competitions from childhood through adulthood. In 2024, she performed in the opening show of a Chicago Bulls NBA game, adding large-scale commercial stage experience to her background.
-             In addition to dance, Angel has an extensive runway and print modeling background, including participation in the International Fashion Supermodel (IFSM) Hollywood show in 2024. She also holds national pageant titles, including 1st Princess of Miss Chinatown Chicago and 4th Princess at Miss Chinatown USA.',
+                  ? `Angel 长期从事舞蹈表演与教学，舞种涵盖 K-POP、Jazz、Hip Hop 及拉丁舞，并持有拉丁舞银牌等级认证。
+                  她自幼开始系统学习拉丁舞，随后逐步接触并深入学习爵士舞与 Hip Hop，并因个人兴趣进一步拓展了 K-POP 舞蹈。在大学期间，Angel 组建并带领舞团，策划、拍摄了多支专业舞蹈 MV，并在 Midwest 地区 K-POP 赛事中多次获得第一名。
+                  她拥有 6 年以上的舞蹈教学经验，曾教授不同年龄层与不同基础水平的学生。从童年到成年，Angel 持续参与各类舞台演出与舞蹈赛事。2024 年，她参与了芝加哥公牛队（Chicago Bulls）NBA 比赛的开场表演，积累了大型商业舞台的演出经验。
+                  除舞蹈领域外，Angel 亦拥有丰富的 T 台及平面模特经验，并于 2024 年参与好莱坞 International Fashion Supermodel（IFSM）时装秀。此外，她曾获得 Miss Chinatown Chicago 第一公主，并在 Miss Chinatown USA 全国赛中获得第四公主 的头衔。`.trim()
+                  : `Angel Zhao is a multi-style dancer and instructor trained in K-POP, Jazz, Hip Hop, and Latin dance, and holds a Silver Medal certification in Latin. 
+                  She began her dance training at a young age with Latin dance, later expanding into Jazz and Hip Hop, and eventually focusing on K-POP. During her university years, Angel founded and led a dance team, producing multiple professional dance MVs and earning multiple 1st Place titles at Midwest K-POP competitions. 
+                  She brings over 6 years of teaching experience, working with dancers of different ages and levels. She has participated in numerous stage performances and dance competitions from childhood through adulthood. In 2024, she performed in the opening show of a Chicago Bulls NBA game, adding large-scale commercial stage experience to her background.
+                  In addition to dance, Angel has an extensive runway and print modeling background, including participation in the International Fashion Supermodel (IFSM) Hollywood show in 2024. She also holds national pageant titles, including 1st Princess of Miss Chinatown Chicago and 4th Princess at Miss Chinatown USA.`.trim(),
                 color: 'var(--lapis-blue)',
-                img: '"C:\Users\TJ\Downloads\Dan Dance Website\Weixin Image_20260119215847_12_93.jpg"'
+                img: 'https://images.unsplash.com/photo-1547153760-18fc86324498?q=80&w=1200'
               },
               {
                 name: lang === 'cn' ? '韩若璟' : 'Han Ruojing',
