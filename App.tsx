@@ -144,7 +144,7 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
       <div className="space-y-8">
         <h4 className="text-[11px] uppercase tracking-[0.4em] font-semibold opacity-30 text-[var(--lapis-blue)]">{lang === 'cn' ? '快速导航' : 'Explore'}</h4>
         <div className="flex flex-col gap-5">
-     {(['about', 'classes', 'instructors', 'events', 'contact'] as const).map(item => (
+     {(['about', 'classes', 'instructors', 'awards', 'events', 'contact'] as const).map(item => (
             <button key={item} onClick={() => onNav(item)} className="text-sm opacity-50 hover:opacity-100 hover:text-[var(--lapis-blue)] transition-all text-left">
               {translations.nav[item][lang]}
             </button>
