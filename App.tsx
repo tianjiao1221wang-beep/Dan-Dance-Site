@@ -728,7 +728,7 @@ export default function App() {
                  </div>
                  <div className="space-y-2">
                    <p className="text-[11px] uppercase tracking-widest opacity-30 font-bold text-[var(--lapis-blue)]">{lang === 'cn' ? '艺术工坊' : 'Academy'}</p>
-                   <p className="text-lg font-medium">123 Dan Street, Art City, 56789</p>
+                   <p className="text-lg font-medium">1557 W 33rd Street, Chicago, 60608</p>
                  </div>
                </div>
                <div className="flex items-center gap-8 group">
