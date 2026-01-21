@@ -426,7 +426,6 @@ export default function App() {
                 color: 'var(--sandstone)',
                  img: '/images/instructor-ziyu.jpg'
                }
-            }
             ].map((instructor) => (
               <div key={instructor.id} className="group rounded-[3rem] overflow-hidden bg-white shadow-xl border border-[var(--lapis-blue)]/5 flex flex-col">
                 <div className="h-80 overflow-hidden relative">
