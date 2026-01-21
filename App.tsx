@@ -268,11 +268,11 @@ export default function App() {
           </p>
           <div className="grid grid-cols-2 gap-12 pt-10 border-t border-[var(--sandstone)]/10">
             <div className="space-y-2">
-              <span className="block text-4xl font-serif text-[var(--turquoise)]">12+</span>
+              <span className="block text-4xl font-serif text-[var(--turquoise)]">3+</span>
               <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">{lang === 'cn' ? '载艺积淀' : 'Years Heritage'}</p>
             </div>
             <div className="space-y-2">
-              <span className="block text-4xl font-serif text-[var(--mineral-red)]">3K+</span>
+              <span className="block text-4xl font-serif text-[var(--mineral-red)]">200+</span>
               <p className="text-[10px] uppercase tracking-widest opacity-40 font-bold">{lang === 'cn' ? '学员成长' : 'Alumni Growth'}</p>
             </div>
           </div>
@@ -307,7 +307,7 @@ export default function App() {
               { 
                 icon: <BookOpen size={28} />, 
                 title: translations.classes.chineseDance[lang], 
-                desc: lang === 'cn' ? '涵盖古典舞、敦煌舞与民族民间。在舞韵中培养深厚文化底蕴与优雅身姿。' : 'Encompassing Classical, Dunhuang, and Folk. Cultivate cultural depth and graceful posture.',
+                desc: lang === 'cn' ? '涵盖中国古典舞、芭蕾基训与民族民间。在舞韵中培养深厚文化底蕴与优雅身姿。' : 'Encompassing Chinese Classical, Ballet fundamental, and Folk. Cultivate cultural depth and graceful posture.',
                 color: 'var(--mineral-red)',
                 img: '/images/class-chinese.jpg'
               },
