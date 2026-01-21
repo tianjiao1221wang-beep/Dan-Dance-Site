@@ -215,7 +215,7 @@ export default function App() {
           <img 
              src="/images/hero.jpg"
             alt="Dunhuang Aesthetic" 
-            className="w-full h-full object-cover opacity-[0.25] filter grayscale-[0.1] sepia-[0.2]" 
+            className="w-full h-full object-contain opacity-[0.25] filter grayscale-[0.1] sepia-[0.2]"
           />
         </div>
         
@@ -280,14 +280,14 @@ export default function App() {
         <div className="lg:col-span-7 relative">
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-6 pt-12">
-               <img src="/images/about-1.jpg" className="rounded-[3.5rem] h-[500px] w-full object-cover shadow-2xl" alt="Dance Art" />
+               <img src="/images/about-1.jpg" className="rounded-[3.5rem] h-[500px] w-full object-contain shadow-2xl" alt="Dance Art" />
                <div className="rounded-[2.5rem] h-[250px] w-full bg-soft-blue flex items-center justify-center p-8 text-center italic opacity-70 font-serif border border-[var(--lapis-blue)]/10 text-[var(--lapis-blue)]">
                   {lang === 'cn' ? '“舞如丹青，身如墨笔”' : '"Dance like a painting, the body as the ink brush"'}
                </div>
             </div>
             <div className="space-y-6">
-               <img src="/images/about-2.jpg" className="rounded-[3.5rem] h-[400px] w-full object-cover shadow-xl" alt="Stage Moment" />
-               <img src="/images/about-3.jpg" className="rounded-[2.5rem] h-[350px] w-full object-cover shadow-lg opacity-90 filter brightness-[1.1]" alt="Dunhuang Step" />
+               <img src="/images/about-2.jpg" className="rounded-[3.5rem] h-[400px] w-full object-contain shadow-xl" alt="Stage Moment" />
+               <img src="/images/about-3.jpg" className="rounded-[2.5rem] h-[350px] w-full object-contain shadow-lg opacity-90 filter brightness-[1.1]" alt="Dunhuang Step" />
             </div>
           </div>
         </div>
@@ -328,7 +328,7 @@ export default function App() {
             ].map((cls, i) => (
               <div key={i} className="museum-card group h-full flex flex-col bg-white overflow-hidden shadow-sm">
                 <div className="h-72 overflow-hidden relative">
-                   <img src={cls.img} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" alt={cls.title} />
+                  <img src={cls.img} className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110" alt={cls.title} />
                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
                 <div className="p-12 space-y-8 flex-grow flex flex-col">
@@ -480,7 +480,7 @@ export default function App() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
            {galleryImages.map((img, i) => (
             <div key={i} className={`rounded-[3rem] overflow-hidden relative group ${img.span} h-full min-h-[300px] shadow-2xl`}>
-              <img src={img.src} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter brightness-[0.85] grayscale-[0.2]" alt="Performance Img" />
+              <img src={img.src} className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110 filter brightness-[0.85] grayscale-[0.2]" alt="Performance Img" />
               <div className="absolute inset-0 bg-[var(--lapis-blue)]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[4px]">
                  <Star className="text-white opacity-60 absolute top-8 right-8" size={24} />
                  <span className="text-white text-[11px] uppercase tracking-[0.5em] border border-white/40 px-8 py-4 rounded-full font-bold">Showcase</span>
@@ -518,7 +518,7 @@ export default function App() {
               <div key={i} className="flex flex-col gap-12 group">
                 <div className="relative aspect-square">
                   <div className="absolute inset-0 rounded-[4.5rem] border-2 border-[var(--sandstone)]/10 -rotate-3 group-hover:rotate-0 transition-transform duration-1000 shadow-sm"></div>
-                  <img src={story.img} className="w-full h-full object-cover rounded-[4.5rem] shadow-2xl group-hover:scale-[0.98] transition-transform duration-1000" alt={story.name} />
+                  <img src={story.img} className="w-full h-full object-contain rounded-[4.5rem] shadow-2xl group-hover:scale-[0.98] transition-transform duration-1000" alt={story.name} />
                   <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <Heart size={32} style={{ color: story.color }} fill={story.color} opacity={0.2} />
                   </div>
@@ -570,7 +570,7 @@ export default function App() {
                 </div>
                 <div className="lg:w-1/2 w-full">
                   <div className="rounded-[4rem] overflow-hidden aspect-[16/10] shadow-2xl relative border-8 border-white">
-                    <img src={ev.img} className="w-full h-full object-cover hover:scale-105 transition-transform duration-[1500ms]" alt={ev.title} />
+                     <img src={ev.img} className="w-full h-full object-contain hover:scale-105 transition-transform duration-[1500ms]" alt={ev.title} />
                   </div>
                 </div>
               </div>
