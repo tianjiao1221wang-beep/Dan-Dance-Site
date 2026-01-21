@@ -169,6 +169,7 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
 
 export default function App() {
   const [lang, setLang] = useState<Language>('cn');
+  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
  const fallbackInstructorImage = '/images/instructor-dan.jpg';
 
   const scrollToSection = (id: string) => {
@@ -194,9 +195,45 @@ export default function App() {
     window.location.href = `mailto:sipbrush@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
   
+  const pastEventGallery = [
+    '/images/instructor-dan.jpg',
+    '/images/instructor-angel.jpg',
+    '/images/instructor-fengyuan.jpg',
+    '/images/instructor-ziyu.jpg'
+  ];
   return (
     <div className="relative">
       <Navbar lang={lang} setLang={setLang} onNav={scrollToSection} />
+{isGalleryOpen ? (
+        <div className="fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl flex items-center justify-center px-6">
+          <div className="absolute inset-0" onClick={() => setIsGalleryOpen(false)}></div>
+          <div className="relative z-10 max-w-5xl w-full">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.5em] opacity-40 font-bold text-[var(--lapis-blue)]">
+                  {lang === 'cn' ? '往期回顾' : 'Past Event Gallery'}
+                </p>
+                <h3 className="text-3xl md:text-4xl font-serif text-[var(--lapis-blue)]">
+                  {lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
+                </h3>
+              </div>
+              <button
+                onClick={() => setIsGalleryOpen(false)}
+                className="nav-link px-6 py-3 text-xs font-bold"
+              >
+                {lang === 'cn' ? '关闭' : 'Close'}
+              </button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {pastEventGallery.map((src) => (
+                <div key={src} className="rounded-[2.5rem] overflow-hidden shadow-xl bg-white">
+                  <img src={src} alt="Past event highlight" className="w-full h-full object-contain" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ) : null}
 
       {/* Hero Section */}
       <section id="home" className="h-[105vh] flex items-center justify-center relative overflow-hidden bg-white">
@@ -457,7 +494,7 @@ export default function App() {
         </div>
       </Section>
  
-      {/* Awards Section */}
+       {/* Awards Section */}
       <Section id="awards" className="bg-white">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
@@ -473,7 +510,7 @@ export default function App() {
                 : 'From the Lotus Award to international competitions, our dancers earn acclaim for artistry, discipline, and cultural storytelling.'}
             </p>
           </div>
-          <div className="relative">
+           <div className="relative">
             <div className="rounded-[3.5rem] border border-[var(--sandstone)]/20 bg-white/80 p-6 shadow-2xl">
               <div className="aspect-[4/3] rounded-[3rem] border border-dashed border-[var(--sandstone)]/30 bg-[var(--parchment)] flex items-center justify-center overflow-hidden">
                 <img
@@ -544,6 +581,7 @@ export default function App() {
               {lang === 'cn' ? '过去与未来的舞台记忆与旅程' : 'Past highlights and future journeys, gathered in one timeline.'}
             </p>
           </div>
+         
           <div className="space-y-28">
             <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -551,7 +589,7 @@ export default function App() {
                   <div className="flex items-center gap-3 text-[var(--mineral-red)]">
                     <Calendar size={18} />
                     <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
-                  </div>
+                </div>
                   <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
                     {lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
                   </h3>
@@ -560,22 +598,25 @@ export default function App() {
                       ? '用一场沉浸式公演将敦煌壁画的韵律与当代舞台语言交织，让观众在光影中感受千年回响。'
                       : 'An immersive production weaving Dunhuang mural rhythms with modern stage language, inviting the audience into a millennium of echoes.'}
                   </p>
+                  <button
+                    onClick={() => setIsGalleryOpen(true)}
+                    className="nav-link py-4 px-10 font-bold text-xs"
+                    style={{ backgroundColor: 'var(--mineral-red)', color: 'white' }}
+                  >
+                    {lang === 'cn' ? '查看相册' : 'View Gallery'}
+                  </button>
                 </div>
-                <div className="p-10 lg:p-12 bg-soft-blue">
-                  <div className="grid grid-cols-2 gap-6">
-                    {[
-                      '/images/instructor-dan.jpg',
-                      '/images/instructor-angel.jpg',
-                      '/images/instructor-fengyuan.jpg',
-                      '/images/instructor-ziyu.jpg'
-                    ].map((src, index) => (
-                      <div key={src} className={`rounded-[2rem] overflow-hidden shadow-lg ${index === 0 ? 'col-span-2' : ''}`}>
-                        <img src={src} alt="Past event highlight" className="w-full h-full object-contain" />
-                      </div>
-                    ))}
-                  </div>
+                <div className="p-10 lg:p-12 bg-soft-blue flex items-center justify-center">
+                  <div className="rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl border-8 border-white w-full">
+                    <img
+                      src="/images/instructor-dan.jpg"
+                      alt={lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
+                      className="w-full h-full object-contain"
+                    />
+             
                 </div>
                 </div>
+           </div>
             </div>
 
             <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
@@ -603,7 +644,7 @@ export default function App() {
                     </button>
                   </div>
                 </div>
-                <div className="p-10 lg:p-12 bg-soft-blue flex items-center justify-center">
+               <div className="p-10 lg:p-12 bg-soft-blue flex items-center justify-center">
                   <div className="rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl border-8 border-white w-full">
                     <img src="/images/instructor-angel.jpg" className="w-full h-full object-contain" alt={lang === 'cn' ? '春季大师集训营' : 'Spring Master Class'} />
                   </div>
