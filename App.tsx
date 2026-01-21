@@ -499,7 +499,7 @@ export default function App() {
  
        {/* Awards Section */}
       <Section id="awards" className="bg-white">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-6xl mx-auto space-y-12">
           <div className="space-y-8">
             <h4 className="text-[11px] uppercase tracking-[0.6em] opacity-40 font-bold text-[var(--sandstone)] flex items-center gap-3">
               <Award size={16} /> {lang === 'cn' ? '获奖荣誉' : 'Award-Winning'}
@@ -507,21 +507,71 @@ export default function App() {
             <h2 className="text-5xl md:text-6xl font-serif text-[var(--sandstone)]">
               {lang === 'cn' ? '国际赛事加冕' : 'Celebrated on Global Stages'}
             </h2>
-            <p className="text-lg opacity-60 font-light leading-loose">
-              {lang === 'cn'
-                ? '从荷花奖到国际舞蹈大赛，我们的舞者以艺术与技艺赢得评审与观众的掌声。'
-                : 'From the Lotus Award to international competitions, our dancers earn acclaim for artistry, discipline, and cultural storytelling.'}
-            </p>
-          </div>
-           <div className="relative">
-            <div className="rounded-[3.5rem] border border-[var(--sandstone)]/20 bg-white/80 p-6 shadow-2xl">
-              <div className="aspect-[4/3] rounded-[3rem] border border-dashed border-[var(--sandstone)]/30 bg-[var(--parchment)] flex items-center justify-center overflow-hidden">
-                <img
-                  src="/images/instructor-dan.jpg"
-                  alt={lang === 'cn' ? '获奖舞者' : 'Award-winning dancer'}
-                  className="w-full h-full object-contain"
-                />
-              </div>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                {
+                  title: lang === 'cn' ? '中国舞荷花奖' : 'China Lotus Award',
+                  detail: lang === 'cn' ? '国家级舞蹈最高荣誉' : 'National top honor for Chinese dance.',
+                  student: lang === 'cn' ? '学生：林语彤' : 'Student: Linton',
+                  dance: lang === 'cn' ? '舞目：莲影' : 'Dance: Lotus Echo',
+                  awardName: lang === 'cn' ? '奖项：金奖' : 'Award: Gold Prize',
+                  image: '/images/instructor-angel.jpg',
+                },
+                {
+                  title: lang === 'cn' ? '北京学生艺术节' : 'Beijing Student Arts Festival',
+                  detail: lang === 'cn' ? '四项金奖与最佳表演' : 'Four Gold Awards and Best Performance.',
+                  student: lang === 'cn' ? '学生：陈若溪' : 'Student: Roxy',
+                  dance: lang === 'cn' ? '舞目：踏歌行' : 'Dance: Steps in Song',
+                  awardName: lang === 'cn' ? '奖项：最佳表演' : 'Award: Best Performance',
+                  image: '/images/instructor-dan.jpg',
+                },
+                {
+                  title: lang === 'cn' ? '国际舞蹈大赛' : 'International Dance Competition',
+                  detail: lang === 'cn' ? '西班牙卡塔罗尼亚赛区冠军' : 'Top honors in Catalonia, Spain.',
+                  student: lang === 'cn' ? '学生：郭伊凡' : 'Student: Evan',
+                  dance: lang === 'cn' ? '舞目：风起' : 'Dance: Rising Wind',
+                  awardName: lang === 'cn' ? '奖项：冠军' : 'Award: Champion',
+                  image: '/images/instructor-fengyuan.jpg',
+                },
+                {
+                  title: lang === 'cn' ? '央视全国舞蹈大赛' : 'CCTV National Dance Competition',
+                  detail: lang === 'cn' ? '最佳作品奖与人气奖' : 'Best Work and Audience Choice.',
+                  student: lang === 'cn' ? '学生：苏安宁' : 'Student: Annie',
+                  dance: lang === 'cn' ? '舞目：长歌行' : 'Dance: Ballad of Light',
+                  awardName: lang === 'cn' ? '奖项：最佳作品' : 'Award: Best Work',
+                  image: '/images/instructor-ziyu.jpg',
+                },
+              ].map((award, index) => (
+                <div
+                  key={award.title}
+                  className="flex flex-col gap-6 rounded-[2rem] border border-[var(--sandstone)]/15 bg-white/80 px-6 py-5 shadow-sm transition hover:-translate-y-1 sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between text-[var(--sandstone)]">
+                      <span className="text-xs uppercase tracking-[0.4em] font-semibold opacity-50">
+                        {lang === 'cn' ? '荣誉' : 'Honor'} {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <Award size={16} className="opacity-60" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-serif text-[var(--sandstone)]">{award.title}</h3>
+                      <p className="mt-2 text-sm opacity-60 leading-relaxed">{award.detail}</p>
+                    </div>
+                    <div className="space-y-1 text-sm font-light text-[var(--sandstone)]/70">
+                      <p>{award.student}</p>
+                      <p>{award.dance}</p>
+                      <p>{award.awardName}</p>
+                    </div>
+                  </div>
+                  <div className="overflow-hidden rounded-[1.5rem] bg-[var(--parchment)] sm:w-44 sm:flex-shrink-0">
+                    <img
+                      src={award.image}
+                      alt={award.title}
+                      className="h-40 w-full object-contain"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
