@@ -9,7 +9,6 @@ import {
   MessageCircle, 
   Phone, 
   Globe,
-  Star,
   Award,
   BookOpen,
   Camera,
@@ -144,7 +143,7 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
       <div className="space-y-8">
         <h4 className="text-[11px] uppercase tracking-[0.4em] font-semibold opacity-30 text-[var(--lapis-blue)]">{lang === 'cn' ? '快速导航' : 'Explore'}</h4>
         <div className="flex flex-col gap-5">
-     {(['about', 'classes', 'instructors', 'awards', 'events', 'contact'] as const).map(item => (
+    {(['about', 'classes', 'instructors', 'awards', 'events', 'contact'] as const).map(item => (
             <button key={item} onClick={() => onNav(item)} className="text-sm opacity-50 hover:opacity-100 hover:text-[var(--lapis-blue)] transition-all text-left">
               {translations.nav[item][lang]}
             </button>
@@ -171,14 +170,6 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
 export default function App() {
   const [lang, setLang] = useState<Language>('cn');
  const fallbackInstructorImage = '/images/instructor-dan.jpg';
-  const galleryImages = [
-    { src: '/images/gallery-1.jpg', span: 'col-span-2 row-span-2' },
-    { src: '/images/gallery-2.jpg', span: 'col-span-1 row-span-1' },
-    { src: '/images/gallery-3.jpg', span: 'col-span-1 row-span-1' },
-    { src: '/images/gallery-4.jpg', span: 'col-span-2 row-span-1' },
-    { src: '/images/gallery-5.jpg', span: 'col-span-1 row-span-1' },
-    { src: '/images/gallery-6.jpg', span: 'col-span-1 row-span-1' }
-  ];
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -496,30 +487,7 @@ export default function App() {
         </div>
       </Section>
 
-      {/* Gallery Section */}
-      <Section id="performances" className="space-y-20">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-12">
-          <div className="space-y-6">
-            <h4 className="text-[11px] uppercase tracking-[0.6em] opacity-40 font-bold text-[var(--lapis-blue)]">{lang === 'cn' ? '舞台华章' : 'Gallery'}</h4>
-            <h2 className="text-5xl md:text-6xl font-serif text-[var(--lapis-blue)]">{translations.nav.performances[lang]}</h2>
-          </div>
-          <p className="max-w-xs text-base opacity-40 font-light leading-relaxed md:text-right italic">
-            "{lang === 'cn' ? '聚光灯下的每一刻，都是汗水的完美回响。' : 'Every moment under the spotlight is the perfect echo of hard work.'}"
-          </p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-           {galleryImages.map((img, i) => (
-            <div key={i} className={`rounded-[3rem] overflow-hidden relative group ${img.span} h-full min-h-[300px] shadow-2xl`}>
-              <img src={img.src} className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110 filter brightness-[0.85] grayscale-[0.2]" alt="Performance Img" />
-              <div className="absolute inset-0 bg-[var(--lapis-blue)]/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[4px]">
-                 <Star className="text-white opacity-60 absolute top-8 right-8" size={24} />
-                 <span className="text-white text-[11px] uppercase tracking-[0.5em] border border-white/40 px-8 py-4 rounded-full font-bold">Showcase</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
+     
       {/* Student Journey */}
       <Section id="students" className="bg-soft-gold !max-w-none px-6 md:px-24 py-40">
         <div className="max-w-5xl mx-auto space-y-32">
@@ -569,42 +537,79 @@ export default function App() {
       {/* Events Timeline */}
       <Section id="events" className="bg-soft-blue !max-w-none border-y border-[var(--lapis-blue)]/5">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-32 space-y-8">
+          <div className="text-center mb-24 space-y-8">
             <h4 className="text-[11px] uppercase tracking-[0.6em] opacity-40 font-bold text-[var(--lapis-blue)]">{lang === 'cn' ? '艺文动态' : 'Academy Events'}</h4>
             <h2 className="text-5xl md:text-6xl font-serif text-[var(--lapis-blue)]">{translations.nav.events[lang]}</h2>
+            <p className="text-base opacity-50 font-light italic text-[var(--lapis-blue)]">
+              {lang === 'cn' ? '过去与未来的舞台记忆与旅程' : 'Past highlights and future journeys, gathered in one timeline.'}
+            </p>
           </div>
-          
-          <div className="space-y-40 relative px-6">
-            <div className="absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-[1px] bg-[var(--lapis-blue)]/10 hidden lg:block"></div>
-            
-            {[
-              { date: '2024.12', title: lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream', desc: lang === 'cn' ? '将千年壁画搬上现代舞台，一场穿越时空的沉浸式艺术盛宴。' : 'Bringing thousand-year-old murals to the modern stage in an immersive artistic feast.', img: '/images/event-1.jpg', color: 'var(--mineral-red)' },
-              { date: '2025.03', title: lang === 'cn' ? '春季大师集训营' : 'Spring Master Class', desc: lang === 'cn' ? '特邀业内名师亲临指导，探索身体表达的无限可能与技艺巅峰。' : 'Invited masters guide students to explore infinite possibilities of expression and skill.', img: '/images/event-2.jpg', color: 'var(--lapis-blue)' }
-            ].map((ev, i) => (
-              <div key={i} className={`flex flex-col lg:flex-row items-center gap-20 ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-                <div className={`lg:w-1/2 ${i % 2 === 0 ? 'lg:text-right' : 'lg:text-left'} space-y-8`}>
-                  <div className="flex items-center gap-4 justify-center lg:justify-end">
-                    <Calendar size={20} style={{ color: ev.color }} />
-                    <span className="text-3xl font-serif opacity-70" style={{ color: ev.color }}>{ev.date}</span>
+          <div className="space-y-28">
+            <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-12 lg:p-16 space-y-6">
+                  <div className="flex items-center gap-3 text-[var(--mineral-red)]">
+                    <Calendar size={18} />
+                    <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
                   </div>
-                  <h3 className="text-4xl font-serif leading-tight" style={{ color: ev.color }}>{ev.title}</h3>
-                  <p className="text-lg opacity-50 font-light leading-loose max-w-md mx-auto lg:mx-0 ${i % 2 === 0 ? 'lg:ml-auto' : 'lg:mr-auto'}">{ev.desc}</p>
-                  <div className="pt-6">
-                    <button onClick={() => scrollToSection('contact')} className="nav-link py-4 px-10 font-bold text-xs" style={{ backgroundColor: `${ev.color}10`, color: ev.color }}>
-                      {lang === 'cn' ? '预约席位 / Reserve' : 'Reserve Spot'}
+                  <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
+                    {lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
+                  </h3>
+                  <p className="text-base opacity-60 font-light leading-loose">
+                    {lang === 'cn'
+                      ? '用一场沉浸式公演将敦煌壁画的韵律与当代舞台语言交织，让观众在光影中感受千年回响。'
+                      : 'An immersive production weaving Dunhuang mural rhythms with modern stage language, inviting the audience into a millennium of echoes.'}
+                  </p>
+                </div>
+                <div className="p-10 lg:p-12 bg-soft-blue">
+                  <div className="grid grid-cols-2 gap-6">
+                    {[
+                      '/images/instructor-dan.jpg',
+                      '/images/instructor-angel.jpg',
+                      '/images/instructor-fengyuan.jpg',
+                      '/images/instructor-ziyu.jpg'
+                    ].map((src, index) => (
+                      <div key={src} className={`rounded-[2rem] overflow-hidden shadow-lg ${index === 0 ? 'col-span-2' : ''}`}>
+                        <img src={src} alt="Past event highlight" className="w-full h-full object-contain" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                </div>
+            </div>
+
+            <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-12 lg:p-16 space-y-8">
+                  <div className="flex items-center gap-3 text-[var(--lapis-blue)]">
+                    <Calendar size={18} />
+                    <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '即将到来' : 'Upcoming Event'}</span>
+                  </div>
+                  <h3 className="text-3xl md:text-4xl font-serif text-[var(--lapis-blue)]">
+                    {lang === 'cn' ? '春季大师集训营' : 'Spring Master Class'}
+                  </h3>
+                  <div className="space-y-3 text-sm uppercase tracking-[0.3em] opacity-50">
+                    <p>{lang === 'cn' ? '2025.03 · Chicago Dance Hall' : 'Mar 2025 · Chicago Dance Hall'}</p>
+                    <p>{lang === 'cn' ? '时间：周六 10:00-16:00' : 'Time: Saturday 10:00-16:00'}</p>
+                  </div>
+                  <p className="text-base opacity-60 font-light leading-loose">
+                    {lang === 'cn'
+                      ? '特邀业内名师亲临指导，聚焦舞台表现力与身体表达的进阶突破。'
+                      : 'Guest masters lead an intensive day focused on stage presence and expressive breakthroughs.'}
+                  </p>
+                  <div className="pt-4">
+                    <button onClick={() => scrollToSection('contact')} className="nav-link py-4 px-10 font-bold text-xs" style={{ backgroundColor: 'var(--lapis-blue)', color: 'white' }}>
+                      {lang === 'cn' ? '联系报名' : 'Contact Us'}
                     </button>
                   </div>
                 </div>
-                <div className="w-14 h-14 rounded-full bg-white border-2 border-[var(--lapis-blue)]/10 hidden lg:flex items-center justify-center z-10 shadow-xl shrink-0">
-                  <div className="w-3 h-3 rounded-full" style={{ backgroundColor: ev.color }}></div>
-                </div>
-                <div className="lg:w-1/2 w-full">
-                  <div className="rounded-[4rem] overflow-hidden aspect-[16/10] shadow-2xl relative border-8 border-white">
-                     <img src={ev.img} className="w-full h-full object-contain hover:scale-105 transition-transform duration-[1500ms]" alt={ev.title} />
+                <div className="p-10 lg:p-12 bg-soft-blue flex items-center justify-center">
+                  <div className="rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl border-8 border-white w-full">
+                    <img src="/images/instructor-angel.jpg" className="w-full h-full object-contain" alt={lang === 'cn' ? '春季大师集训营' : 'Spring Master Class'} />
                   </div>
                 </div>
               </div>
-            ))}
+             </div>
           </div>
         </div>
       </Section>
