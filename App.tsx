@@ -379,7 +379,7 @@ const galleryImages = [
                   As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
                   She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.`.trim(),
                 color: 'var(--mineral-red)',
-                img: '/images/instructor-dan.jpg'
+                scr="/images/instructor-dan.jpg"
               },
               {
                 id: 'angel-zhao',
