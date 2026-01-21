@@ -660,7 +660,7 @@ export default function App() {
                   </button>
                 </div>
                 <div className="p-10 lg:p-12 bg-soft-blue flex items-center justify-center">
-                  <div className="rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl border-8 border-white w-full">
+                  <div className="rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl w-full">
                     <img
                       src="/images/instructor-dan.jpg"
                       alt={lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
@@ -698,7 +698,7 @@ export default function App() {
                   </div>
                 </div>
                <div className="p-10 lg:p-12 bg-soft-blue flex items-center justify-center">
-                  <div className="rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl border-8 border-white w-full">
+                 <div className="rounded-[3rem] overflow-hidden aspect-[4/3] shadow-2xl w-full">
                     <img src="/images/instructor-angel.jpg" className="w-full h-full object-contain" alt={lang === 'cn' ? '春季大师集训营' : 'Spring Master Class'} />
                   </div>
                 </div>
