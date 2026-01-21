@@ -205,29 +205,32 @@ export default function App() {
     <div className="relative">
       <Navbar lang={lang} setLang={setLang} onNav={scrollToSection} />
 {isGalleryOpen ? (
-        <div className="fixed inset-0 z-[90] bg-white/95 backdrop-blur-xl flex items-center justify-center px-6">
-          <div className="absolute inset-0" onClick={() => setIsGalleryOpen(false)}></div>
-          <div className="relative z-10 max-w-5xl w-full">
+         <div className="fixed inset-0 z-[90] flex items-center justify-center px-6">
+          <div
+            className="absolute inset-0 bg-black/65 backdrop-blur-sm"
+            onClick={() => setIsGalleryOpen(false)}
+          ></div>
+          <div className="relative z-10 max-w-5xl w-full max-h-[85vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <p className="text-[10px] uppercase tracking-[0.5em] opacity-40 font-bold text-[var(--lapis-blue)]">
+                <p className="text-[10px] uppercase tracking-[0.5em] opacity-40 font-bold text-white">
                   {lang === 'cn' ? '往期回顾' : 'Past Event Gallery'}
                 </p>
-                <h3 className="text-3xl md:text-4xl font-serif text-[var(--lapis-blue)]">
+                 <h3 className="text-3xl md:text-4xl font-serif text-white">
                   {lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
                 </h3>
               </div>
               <button
                 onClick={() => setIsGalleryOpen(false)}
-                className="nav-link px-6 py-3 text-xs font-bold"
+                className="nav-link px-6 py-3 text-xs font-bold text-white border-white/40 hover:border-white"
               >
                 {lang === 'cn' ? '关闭' : 'Close'}
               </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6">
               {pastEventGallery.map((src) => (
-                <div key={src} className="rounded-[2.5rem] overflow-hidden shadow-xl bg-white">
-                  <img src={src} alt="Past event highlight" className="w-full h-full object-contain" />
+                 <div key={src} className="rounded-[2.5rem] overflow-hidden shadow-xl bg-white/90">
+                  <img src={src} alt="Past event highlight" className="w-full h-auto object-contain" />
                 </div>
               ))}
             </div>
