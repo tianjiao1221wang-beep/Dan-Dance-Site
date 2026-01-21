@@ -7,6 +7,7 @@ export const translations = {
     about: { cn: '学馆哲学', en: 'Philosophy' },
     classes: { cn: '舞艺课程', en: 'Classes' },
      instructors: { cn: '导师风采', en: 'Instructors' },
+    awards: { cn: '获奖荣誉', en: 'Awards' },
     performances: { cn: '舞台盛典', en: 'Performances' },
     students: { cn: '舞者成长', en: 'Student Journey' },
     events: { cn: '艺文活动', en: 'Events' },
