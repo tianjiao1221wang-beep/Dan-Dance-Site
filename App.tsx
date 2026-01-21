@@ -170,7 +170,8 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
 
 export default function App() {
   const [lang, setLang] = useState<Language>('cn');
-const galleryImages = [
+ const fallbackInstructorImage = '/images/instructor-dan.jpg';
+  const galleryImages = [
     { src: '/images/gallery-1.jpg', span: 'col-span-2 row-span-2' },
     { src: '/images/gallery-2.jpg', span: 'col-span-1 row-span-1' },
     { src: '/images/gallery-3.jpg', span: 'col-span-1 row-span-1' },
@@ -429,7 +430,17 @@ const galleryImages = [
             ].map((instructor) => (
               <div key={instructor.id} className="group rounded-[3rem] overflow-hidden bg-white shadow-xl border border-[var(--lapis-blue)]/5 flex flex-col">
                 <div className="h-80 overflow-hidden relative">
-                  <img src={instructor.img} className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110" alt={instructor.name} />
+                   <img
+                    src={instructor.img}
+                    onError={(event) => {
+                      if (event.currentTarget.src.endsWith(fallbackInstructorImage)) {
+                        return;
+                      }
+                      event.currentTarget.src = fallbackInstructorImage;
+                    }}
+                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                    alt={instructor.name}
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
                     <div>
