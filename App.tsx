@@ -465,6 +465,36 @@ export default function App() {
           </div>
         </div>
       </Section>
+ 
+      {/* Awards Section */}
+      <Section id="awards" className="bg-white">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <h4 className="text-[11px] uppercase tracking-[0.6em] opacity-40 font-bold text-[var(--sandstone)] flex items-center gap-3">
+              <Award size={16} /> {lang === 'cn' ? '获奖荣誉' : 'Award-Winning'}
+            </h4>
+            <h2 className="text-5xl md:text-6xl font-serif text-[var(--sandstone)]">
+              {lang === 'cn' ? '国际赛事加冕' : 'Celebrated on Global Stages'}
+            </h2>
+            <p className="text-lg opacity-60 font-light leading-loose">
+              {lang === 'cn'
+                ? '从荷花奖到国际舞蹈大赛，我们的舞者以艺术与技艺赢得评审与观众的掌声。'
+                : 'From the Lotus Award to international competitions, our dancers earn acclaim for artistry, discipline, and cultural storytelling.'}
+            </p>
+          </div>
+          <div className="relative">
+            <div className="rounded-[3.5rem] border border-[var(--sandstone)]/20 bg-white/80 p-6 shadow-2xl">
+              <div className="aspect-[4/3] rounded-[3rem] border border-dashed border-[var(--sandstone)]/30 bg-[var(--parchment)] flex items-center justify-center overflow-hidden">
+                <img
+                  src="/images/instructor-dan.jpg"
+                  alt={lang === 'cn' ? '获奖舞者' : 'Award-winning dancer'}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
 
       {/* Gallery Section */}
       <Section id="performances" className="space-y-20">
