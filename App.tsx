@@ -430,7 +430,7 @@ export default function App() {
                }
             ].map((instructor) => (
               <div key={instructor.id} className="group rounded-[3rem] overflow-hidden bg-white shadow-xl border border-[var(--lapis-blue)]/5 flex flex-col">
-                <div className="h-80 overflow-hidden relative">
+                 <div className="overflow-hidden relative">
                    <img
                     src={instructor.img}
                     onError={(event) => {
@@ -439,7 +439,7 @@ export default function App() {
                       }
                       event.currentTarget.src = fallbackInstructorImage;
                     }}
-                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-110"
+                     className="w-full h-auto object-contain object-top transition-transform duration-[1200ms] group-hover:scale-105"
                     alt={instructor.name}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
