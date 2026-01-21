@@ -745,7 +745,11 @@ export default function App() {
             <div className="pt-16 border-t border-[var(--sandstone)]/10 flex items-center gap-10">
                <div className="w-28 h-28 bg-[var(--parchment)] rounded-3xl p-3 flex items-center justify-center border border-[var(--sandstone)]/10 shadow-inner">
                  <div className="w-full h-full border border-dashed border-[var(--sandstone)]/30 rounded-2xl flex items-center justify-center">
-                    <span className="text-[9px] opacity-30 uppercase tracking-[0.1em] text-center text-[var(--lapis-blue)]">WECHAT<br/>QR</span>
+                    <img
+                      src="/images/contact-wechat.jpg"
+                      alt="WeChat QR code"
+                      className="w-full h-full object-contain"
+                    />
                  </div>
                </div>
                <p className="text-[11px] uppercase tracking-[0.3em] opacity-30 font-bold leading-relaxed text-[var(--lapis-blue)]">{lang === 'cn' ? '扫码快速咨询 / WeChat' : 'Scan for instant chat'}</p>
