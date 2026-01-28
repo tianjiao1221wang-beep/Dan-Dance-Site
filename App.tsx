@@ -287,7 +287,7 @@ export default function App() {
           <img 
              src="/images/hero.jpg"
             alt="Dunhuang Aesthetic" 
-             className="w-full h-full object-cover opacity-[0.25] filter grayscale-[0.1] sepia-[0.2]"
+              className="w-full h-full object-cover object-[65%_center] md:object-left opacity-[0.25] filter grayscale-[0.1] sepia-[0.2]"
           />
         </div>
         
