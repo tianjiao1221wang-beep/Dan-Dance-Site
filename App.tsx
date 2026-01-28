@@ -716,8 +716,8 @@ export default function App() {
                   </h3>
                   <p className="text-base opacity-60 font-light leading-loose">
                     {lang === 'cn'
-                      ? '用一场沉浸式公演将敦煌壁画的韵律与当代舞台语言交织，让观众在光影中感受千年回响。'
-                      : 'An immersive production weaving Dunhuang mural rhythms with modern stage language, inviting the audience into a millennium of echoes.'}
+                      ? '芝加哥DanDance艺术学校三周年庆舞蹈专场晚会，汇聚多元舞种，展现梦想与传承之美。'
+                      : 'A special dance gala celebrating DanDance Art Academy’s 3rd anniversary in Chicago, showcasing diverse styles and the beauty of dreams and cultural heritage.'}
                   </p>
                   <button
                     onClick={() => setIsGalleryOpen(true)}
