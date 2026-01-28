@@ -171,7 +171,48 @@ export default function App() {
   const [lang, setLang] = useState<Language>('cn');
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
  const fallbackInstructorImage = '/images/instructor-dan.jpg';
-
+ const studentStories = [
+    { 
+      name: 'Norah Lin', 
+      age: 9, 
+      quote: {
+        cn: '2023年加入DanDance艺术学校，从零开始打基础一直到让自己无比热爱中国舞。\nNorah妈妈说她从来不用担心Norah会懈怠，因为她会给自己留舞蹈作业，每天自己对着镜子重复无数次一样的动作直到让自己满意为止。\n正是对舞蹈的这份热爱，让Norah拥有了坚韧不拔的品质，并在两年后的Showstoppers、KAR、Rainbow等舞蹈大赛中斩获同年龄段第一名和Overall总成绩第七名的成绩。\nNorah Lin：“不是我选择了舞蹈，而是舞蹈选择了我，是舞蹈让我变成了更漂亮的人。”',
+        en: 'From initial shyness to confident curtain calls, dance has shaped not just her posture, but her resilient heart.\nShe practices on her own after class, repeating sequences until she is satisfied with each detail.\nThe dedication has turned into top placements at regional competitions and a stronger sense of self.'
+      },
+      img: '/images/student-norah.jpg',
+      color: 'var(--mineral-red)'
+    },
+    { 
+      name: 'Jethro Lee', 
+      age: 12, 
+      quote: {
+        cn: '2024年加入DanDance艺术学校学习中国舞课程，Jethro一直对中国舞饱有浓厚的兴趣。\n虽然比同班级的同学们开始学习舞蹈的时间更晚，但他在课堂中积极努力，回家后还自律练习。\n一年后的Showstoppers和Platinum舞蹈大赛中，他获得独舞铂金奖和同年龄组第二名的成绩。\nJethro还把中国舞动作融入滑冰表演，自编节目成为冰场亮点。Jethro Lee：“学跳舞虽然有时候很辛苦，但我愿意为了让自己变得更好而吃苦。”',
+        en: 'Finding rhythm in sweat, discovering self in music.\nEven with a later start, his focused practice earned top placements in solo competitions.\nHe now blends Chinese dance movements into his ice-skating routines, turning every performance into a cultural highlight.'
+      },
+      img: '/images/student-jethero.jpg',
+      color: 'var(--lapis-blue)'
+    },
+    { 
+      name: 'Mia Zhou', 
+      age: 10, 
+      quote: {
+        cn: '从最初的腼腆到在舞台上自信起舞，Mia在一年内完成了蜕变。\n老师为她量身打造训练节奏，让她在柔韧与力量之间找到平衡。\n她最喜欢的是敦煌主题作品，因为“每一次挥袖都像在画壁画”。',
+        en: 'Mia transformed from timid steps to stage-ready confidence within a year.\nA tailored training rhythm helped her balance flexibility with strength.\nHer favorite is the Dunhuang-inspired repertoire—“every sleeve turn feels like painting a mural.”'
+      },
+      img: '/images/instructor-angel.jpg',
+      color: 'var(--sandstone)'
+    },
+    { 
+      name: 'Leo Zhang', 
+      age: 11, 
+      quote: {
+        cn: 'Leo曾经只喜欢快节奏的街舞，如今也爱上了中国舞的节奏与韵律。\n通过课堂上的分段练习，他学会把呼吸、眼神和动作连成一体。\n他说：“舞蹈让我学会耐心，也让我更懂得欣赏传统文化。”',
+        en: 'Leo used to only enjoy fast-paced street dance but now loves the rhythm of Chinese dance.\nStep-by-step practice helped him connect breath, focus, and movement.\n“Dance taught me patience and a deeper appreciation for tradition,” he shares.'
+      },
+      img: '/images/instructor-ziyu.jpg',
+      color: 'var(--jade)'
+    }
+  ];
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -359,8 +400,14 @@ export default function App() {
             ].map((cls, i) => (
               <div key={i} className="museum-card group h-full flex flex-col bg-white overflow-hidden shadow-sm">
                 <div className="h-72 overflow-hidden relative">
-                  <img src={cls.img} className="w-full h-full object-contain transition-transform duration-1000 group-hover:scale-110" alt={cls.title} />
-                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                  <img
+                    src={cls.img}
+                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    alt={cls.title}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
                 </div>
                 <div className="p-12 space-y-8 flex-grow flex flex-col">
                   <div className="w-14 h-14 rounded-3xl flex items-center justify-center shadow-sm" style={{ backgroundColor: `${cls.color}10`, color: cls.color }}>
@@ -589,34 +636,27 @@ export default function App() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-32">
-            {[
-              { 
-                name: 'Norah Lin', 
-                age: 9, 
-                quote: lang === 'cn' ? '2023年加入DanDance艺术学校，从零开始打基础一直到让自己无比热爱中国舞。Norah妈妈说她从来不用担心Norah会懈怠，因为她会给自己留舞蹈作业，每天自己对着镜子重复无数次一样的动作直到让自己满意为止。正是对舞蹈的这份热爱，让Norah拥有了坚韧不拔的品质，并在两年后的Showstoppers 、KAR、Rainbow等舞蹈大赛中斩获同年龄段第一名和Overall总成绩第七名的成绩。Norah Lin：“不是我选择了舞蹈，而是舞蹈选择了我，是舞蹈让我变成了更漂亮的人。”' 
-                  : 'From initial shyness to confident curtain calls, dance has shaped not just her posture, but her resilient heart.',
-                img: '/images/student-norah.jpg',
-                color: 'var(--mineral-red)'
-              },
-              { 
-                name: 'Jethro Lee', 
-                age: 12, 
-                quote: lang === 'cn' ? '2024年加入DanDance 艺术学校学习中国舞课程，Jethro一直对中国舞饱有浓厚的兴趣，虽比同班级的同学们开始学习舞蹈的时间更晚，但他在课堂中积极努力，回家后还自律练习，并在一年后的Showstoppers和Platinum舞蹈大赛中获得独舞铂金奖和同年龄组第二名的成绩。同年，Jethro还把自己在中国舞课堂上学到的动作元素融入到滑冰表演中，自己创编滑冰节目，成为了冰场表演中的一大亮点，让美国人为中国音乐和舞蹈艺术起立鼓掌！Jethro Lee: “学跳舞虽然有时候很辛苦，但我愿意为了让自己变得更好而吃苦，我希望通过这样的过程让我以后也能勇敢面对更多挑战。”' : 'Finding rhythm in sweat, discovering self in music. For him, every beat is a step toward the future.',
-                img: '/images/student-jethero.jpg',
-                color: 'var(--lapis-blue)'
-              }
-            ].map((story, i) => (
+            
+            {studentStories.map((story, i) => (
               <div key={i} className="flex flex-col gap-12 group">
-                <div className="relative aspect-square">
+                 <div className="relative h-[26rem] md:h-[30rem]">
                   <div className="absolute inset-0 rounded-[4.5rem] border-2 border-[var(--sandstone)]/10 -rotate-3 group-hover:rotate-0 transition-transform duration-1000 shadow-sm"></div>
-                  <img src={story.img} className="w-full h-full object-contain rounded-[4.5rem] shadow-2xl group-hover:scale-[0.98] transition-transform duration-1000" alt={story.name} />
+                 <img
+                    src={story.img}
+                    className="w-full h-full object-cover rounded-[4.5rem] shadow-2xl group-hover:scale-[0.98] transition-transform duration-1000"
+                    alt={story.name}
+                    loading="lazy"
+                    decoding="async"
+                  />
                   <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                     <Heart size={32} style={{ color: story.color }} fill={story.color} opacity={0.2} />
                   </div>
                 </div>
                 <div className="space-y-8 px-6">
                   <h3 className="text-4xl font-serif" style={{ color: story.color }}>{story.name} <span className="text-lg font-light opacity-30 italic">/ {story.age} Yrs</span></h3>
-                  <p className="text-xl opacity-60 leading-relaxed font-light italic">"{story.quote}"</p>
+                  <p className="text-xl opacity-60 leading-relaxed font-light italic whitespace-pre-line">
+                    "{story.quote[lang]}"
+                  </p>
                   <button onClick={() => scrollToSection('contact')} className="nav-link py-4 px-10 font-bold text-xs" style={{ color: story.color, backgroundColor: `${story.color}10` }}>
                     {lang === 'cn' ? '见证更多成长' : 'See Growth'}
                   </button>
@@ -645,7 +685,7 @@ export default function App() {
                   <div className="flex items-center gap-3 text-[var(--mineral-red)]">
                     <Calendar size={18} />
                     <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
-                </div>
+                   </div>
                   <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
                     {lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
                   </h3>
@@ -667,11 +707,11 @@ export default function App() {
                     src="/images/instructor-dan.jpg"
                     alt={lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
                     className="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
-             
                 </div>
-                </div>
-           </div>
+                  </div>
             </div>
 
             <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
