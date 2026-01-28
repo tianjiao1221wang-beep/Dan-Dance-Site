@@ -400,12 +400,14 @@ export default function App() {
               {
                 id: 'dan-wu',
                 name: lang === 'cn' ? '吴丹' : 'Dan Wu',
-                role: lang === 'cn' ? '中国舞主教 · 创始人' : 'CHINESE DANCE TEACHING LEAD · FOUNDER',
+                role: lang === 'cn' ? '古典舞|民族舞|芭蕾基训 主教 · 创始人' : 'CHINESE DANCE TEACHING LEAD · FOUNDER',
                 desc: lang === 'cn'
-                  ? `毕业于首都师范大学，获学士学位。自四岁起学习中国舞基本功，大学期间专注于中国舞与舞台表演及文化表达的融合。
-                  曾荣获中国舞蹈界最高奖项之一——荷花奖，并多次登上中国官方春节联欢晚会舞台；同时参与河北空军某部文艺慰问演出志愿活动。
-                  少年时期参演《小蝌蚪》《闪闪的红星》《雨中舞蹈》等多项节目，获中央电视台“最受欢迎演员”称号；主演作品《渔家乐》荣获省级奖项。
-                  曾被多所重点舞蹈院校录取，包括首都师范大学、东北师范大学。成为一名致力于传承中国舞艺术的教师，始终是她心中最坚定的梦想`.trim()
+                  ? `首都师范大学本科，四岁开始学习中国舞基本功，大一开始钻研中国舞舞蹈文化，着重于舞蹈和表演间结合。
+                  曾获得荷花奖并多次参演中国春晚舞台，曾为河北空军文艺分队演员。少年时期参演《娃娃雨》《闪闪红星》《跃动》等节目荣获中央电视台“最佳人气奖”，领舞《渔翁舞》曾获省级表演奖。
+                  考入首都师范大学、北京师范大学多所艺术专业院校的录取通知书。最大的梦想是能成为一名传承中国舞文化的教师。
+                  之后，赴美留学获得临床心理学和犯罪心理学双学士学位和婚姻家庭心理学硕士学位。持续研究儿童与父母等家庭关系，致力于把舞蹈融入心理疏导的过程中，并登上伊利诺伊大学关于舞蹈心理学的演讲台。
+                  大学期间，在美创办中国舞蹈团，曾为伊利诺伊州音乐学院特邀导演，所带领团队多次参演国际节并作为中国舞编导登上州报头条。毕业前的最后一年，带领自己的学生在州政府剧院演出唯一一届中国舞蹈文化公益演出，累计不同国家演员观众中国文化，演出跨场超过60次。
+                  硕士毕业后，坚持“有人艺术，无为过往，无为现在，而为未来”的核心思想创办艺术学校，带领每位学员自信舞蹈，心无旁骛，无畏挑战。`.trim()
                   : `Graduated from Capital Normal University with a bachelor’s degree. Dan began studying Chinese dance fundamentals at the age of four and later focused on integrating Chinese dance with stage performance and cultural expression in university.
                   She has received the prestigious Lotus Award and performed multiple times in China’s official Spring Festival Gala. She also volunteered for performance tours with the Hebei Air Force District.
                   As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
@@ -589,16 +591,17 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-32">
             {[
               { 
-                name: 'Norah', 
+                name: 'Norah Lin', 
                 age: 9, 
-                quote: lang === 'cn' ? '从最初的胆怯到如今舞台上的自信谢幕，舞蹈不仅塑造了她的体态，更给予了她坚韧的内心。' : 'From initial shyness to confident curtain calls, dance has shaped not just her posture, but her resilient heart.',
+                quote: lang === 'cn' ? '2023年加入DanDance艺术学校，从零开始打基础一直到让自己无比热爱中国舞。Norah妈妈说她从来不用担心Norah会懈怠，因为她会给自己留舞蹈作业，每天自己对着镜子重复无数次一样的动作直到让自己满意为止。正是对舞蹈的这份热爱，让Norah拥有了坚韧不拔的品质，并在两年后的Showstoppers 、KAR、Rainbow等舞蹈大赛中斩获同年龄段第一名和Overall总成绩第七名的成绩。Norah Lin：“不是我选择了舞蹈，而是舞蹈选择了我，是舞蹈让我变成了更漂亮的人。”' 
+                  : 'From initial shyness to confident curtain calls, dance has shaped not just her posture, but her resilient heart.',
                 img: '/images/student-norah.jpg',
                 color: 'var(--mineral-red)'
               },
               { 
-                name: 'Jethro', 
+                name: 'Jethro Lee', 
                 age: 12, 
-                quote: lang === 'cn' ? '在汗水中找到节奏，在音乐中发现自我。对他而言，每一个节拍都是通往未来的台阶。' : 'Finding rhythm in sweat, discovering self in music. For him, every beat is a step toward the future.',
+                quote: lang === 'cn' ? '2024年加入DanDance 艺术学校学习中国舞课程，Jethro一直对中国舞饱有浓厚的兴趣，虽比同班级的同学们开始学习舞蹈的时间更晚，但他在课堂中积极努力，回家后还自律练习，并在一年后的Showstoppers和Platinum舞蹈大赛中获得独舞铂金奖和同年龄组第二名的成绩。同年，Jethro还把自己在中国舞课堂上学到的动作元素融入到滑冰表演中，自己创编滑冰节目，成为了冰场表演中的一大亮点，让美国人为中国音乐和舞蹈艺术起立鼓掌！Jethro Lee: “学跳舞虽然有时候很辛苦，但我愿意为了让自己变得更好而吃苦，我希望通过这样的过程让我以后也能勇敢面对更多挑战。”' : 'Finding rhythm in sweat, discovering self in music. For him, every beat is a step toward the future.',
                 img: '/images/student-jethero.jpg',
                 color: 'var(--lapis-blue)'
               }
