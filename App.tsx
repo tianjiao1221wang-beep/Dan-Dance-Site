@@ -193,23 +193,25 @@ export default function App() {
       color: 'var(--lapis-blue)'
     },
     { 
-      name: 'Mia Zhou', 
+      name: 'Valerie Lin', 
       age: 10, 
       quote: {
-        cn: '从最初的腼腆到在舞台上自信起舞，Mia在一年内完成了蜕变。\n老师为她量身打造训练节奏，让她在柔韧与力量之间找到平衡。\n她最喜欢的是敦煌主题作品，因为“每一次挥袖都像在画壁画”。',
-        en: 'Mia transformed from timid steps to stage-ready confidence within a year.\nA tailored training rhythm helped her balance flexibility with strength.\nHer favorite is the Dunhuang-inspired repertoire—“every sleeve turn feels like painting a mural.”'
+        cn: '2023年加入DanDance艺术学校，自此与中国舞结下了不解之缘。Valerie同学一路从基础班层层晋升到比赛班，一直对自己严格要求。\n在学习中国舞的过程中，Valerie同学接触过多种不同风格舞蹈，比如身韵舞蹈、敦煌舞蹈、民族舞蹈等，在学习的第二年中主动和吴老师说喜欢跳敦煌舞并想要在敦煌舞中深入学习，所以开始了自己了一对一舞蹈课。\n两年后，凭借一直敦煌独舞，斩获KAR舞蹈大赛中同年龄组第一名和Overall总成绩第一名的好成绩。同年，还获得Showstoppers和Rainbow舞蹈大赛第二名的成绩，和国际桃李杯十佳铂金奖提名。\n现在，Valerie同学依然每周坚持上群舞课和独舞课，虽然比其他同学辛苦一点，到她仍然乐在其中。\nValerie Lin：“中国舞很美，我想把这么优秀的中华文化传承下去。”\n她最喜欢的是敦煌主题作品，因为“每一次挥袖都像在画壁画”。',
+        en: 'Valerie joined DanDance Art School in 2023 and has since formed a deep and lasting connection with Chinese dance. Beginning in the foundational level, she steadily advanced through each class level and eventually entered the competition program, consistently holding herself to high standards.\nThroughout her Chinese dance training, Valerie has explored a wide range of styles, including Shenyun (movement and expression), Dunhuang dance, and ethnic folk dance. In her second year of study, she proactively expressed to Ms. Wu her strong interest in Dunhuang dance and her desire to pursue deeper training in this style. As a result, she began one-on-one private lessons focused on Dunhuang dance.\nAfter two years of dedicated study, Valerie achieved outstanding results with her Dunhuang solo, earning 1st Place in her age division and Overall 1st Place at the KAR Dance Competition. In the same year, she also received 2nd Place awards at the Showstoppers and Rainbow Dance Competitions, as well as a Top Ten Platinum Award nomination at the International Taoli Cup.\nToday, Valerie continues to attend both group and solo classes every week. Although her training schedule is more demanding than that of many peers, she finds great joy and fulfillment in the process.
+\nValerie Lin: “Chinese dance is incredibly beautiful. I hope to carry forward and pass on this outstanding Chinese culture.”'
       },
-      img: '/images/instructor-angel.jpg',
+      img: '/images/student-valerie.jpg',
       color: 'var(--sandstone)'
     },
     { 
-      name: 'Leo Zhang', 
+      name: 'Fiona Duan', 
       age: 11, 
       quote: {
-        cn: 'Leo曾经只喜欢快节奏的街舞，如今也爱上了中国舞的节奏与韵律。\n通过课堂上的分段练习，他学会把呼吸、眼神和动作连成一体。\n他说：“舞蹈让我学会耐心，也让我更懂得欣赏传统文化。”',
-        en: 'Leo used to only enjoy fast-paced street dance but now loves the rhythm of Chinese dance.\nStep-by-step practice helped him connect breath, focus, and movement.\n“Dance taught me patience and a deeper appreciation for tradition,” he shares.'
+        cn: '2024年加入DanDance艺术学校，曾经学习芭蕾舞蹈的她和妈妈说：“我不喜欢芭蕾舞，我喜欢古典舞。” 自此，Fiona开始了她的中国舞学习之旅。\n她对中国舞的一招一式表现得非常感兴趣，甚至自己可以通过聆听中国舞的音乐来改编整合成自己的音乐，再运用到自己的独舞剧目中。在学习舞蹈这方面，她潜心钻研，不畏辛苦。\n一年后，Fiona通过独舞课程完成了自己的第一支古典舞《醉清波》，并获得国际桃李杯十佳铂金奖提名。直至今日，她仍然在舞蹈课中积极学习，出现在芝加哥各大专业舞台中。\nFiona Duan：“舞蹈是我生命中的一部分，我永远都不会放弃跳舞这件事。”',
+        en: 'In 2024, Fiona joined DanDance Art School. Having previously studied ballet, she once told her mother, “I don’t like ballet—I like classical Chinese dance.” From that moment on, Fiona began her journey in Chinese dance.\nShe shows a deep fascination with every movement and gesture of Chinese dance. Remarkably, she is even able to listen to traditional Chinese dance music, reinterpret and rearrange it into her own compositions, and apply them to her solo performances. In her dance training, Fiona is dedicated, focused, and unafraid of hard work.\nAfter one year of study, Fiona completed her first classical Chinese dance solo, Zui Qing Bo, through the solo training program and received a nomination for the Top Ten Platinum Award at the International Taoli Cup. To this day, she continues to train actively and appears on major professional stages throughout Chicago.
+\nFiona Duan:“Dance is a part of my life. I will never give up dancing.”'
       },
-      img: '/images/instructor-ziyu.jpg',
+      img: '/images/student-fiona.jpg',
       color: 'var(--jade)'
     }
   ];
