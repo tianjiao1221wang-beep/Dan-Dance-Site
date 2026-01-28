@@ -170,7 +170,6 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
 export default function App() {
   const [lang, setLang] = useState<Language>('cn');
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
- const fallbackInstructorImage = '/images/instructor-dan.jpg';
  const studentStories = [
     { 
       name: 'Norah Lin', 
@@ -237,14 +236,6 @@ export default function App() {
     ].join('\n');
     window.location.href = `mailto:sipbrush@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
-  
-  const pastEventGallery = [
-    '/images/instructor-dan.jpg',
-    '/images/instructor-angel.jpg',
-    '/images/instructor-fengyuan.jpg',
-    '/images/instructor-ziyu.jpg'
-  ];
-  return (
     <div className="relative">
       <Navbar lang={lang} setLang={setLang} onNav={scrollToSection} />
 {isGalleryOpen ? (
@@ -260,7 +251,7 @@ export default function App() {
                   {lang === 'cn' ? '往期回顾' : 'Past Event Gallery'}
                 </p>
                  <h3 className="text-3xl md:text-4xl font-serif text-white">
-                  {lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
+                  {lang === 'cn' ? '2025 年度公演' : '2025 Annual Gala'}
                 </h3>
               </div>
               <button
@@ -566,7 +557,7 @@ export default function App() {
                   student: lang === 'cn' ? '学生：林语彤' : 'Student: Linton',
                   dance: lang === 'cn' ? '舞目：莲影' : 'Dance: Lotus Echo',
                   awardName: lang === 'cn' ? '奖项：金奖' : 'Award: Gold Prize',
-                  image: '/images/instructor-angel.jpg',
+                  image: '/images/award-1.jpg',
                 },
                 {
                   title: lang === 'cn' ? '北京学生艺术节' : 'Beijing Student Arts Festival',
@@ -574,7 +565,7 @@ export default function App() {
                   student: lang === 'cn' ? '学生：陈若溪' : 'Student: Roxy',
                   dance: lang === 'cn' ? '舞目：踏歌行' : 'Dance: Steps in Song',
                   awardName: lang === 'cn' ? '奖项：最佳表演' : 'Award: Best Performance',
-                  image: '/images/instructor-dan.jpg',
+                  image: '/images/award-2.jpg',
                 },
                 {
                   title: lang === 'cn' ? '国际舞蹈大赛' : 'International Dance Competition',
@@ -582,7 +573,7 @@ export default function App() {
                   student: lang === 'cn' ? '学生：郭伊凡' : 'Student: Evan',
                   dance: lang === 'cn' ? '舞目：风起' : 'Dance: Rising Wind',
                   awardName: lang === 'cn' ? '奖项：冠军' : 'Award: Champion',
-                  image: '/images/instructor-fengyuan.jpg',
+                  image: '/images/award-3.jpg',
                 },
                 {
                   title: lang === 'cn' ? '央视全国舞蹈大赛' : 'CCTV National Dance Competition',
@@ -590,7 +581,7 @@ export default function App() {
                   student: lang === 'cn' ? '学生：苏安宁' : 'Student: Annie',
                   dance: lang === 'cn' ? '舞目：长歌行' : 'Dance: Ballad of Light',
                   awardName: lang === 'cn' ? '奖项：最佳作品' : 'Award: Best Work',
-                  image: '/images/instructor-ziyu.jpg',
+                  image: '/images/award-4.jpg',
                 },
               ].map((award, index) => (
                 <div
@@ -689,7 +680,7 @@ export default function App() {
                     <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
                    </div>
                   <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
-                    {lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
+                    {lang === 'cn' ? '2025 年度公演' : '2025 Annual Gala'}
                   </h3>
                   <p className="text-base opacity-60 font-light leading-loose">
                     {lang === 'cn'
