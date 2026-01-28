@@ -560,39 +560,60 @@ export default function App() {
             <h2 className="text-5xl md:text-6xl font-serif text-[var(--sandstone)]">
               {lang === 'cn' ? '国际赛事加冕' : 'Celebrated on Global Stages'}
             </h2>
+             <p className="text-base opacity-60 leading-relaxed font-light">
+              {lang === 'cn'
+                ? '2025年累计：7块个人荣誉奖牌、8座奖杯、11张证书、$1250奖学金、15个评委徽章。'
+                : '2025 totals: 7 individual honor medals, 8 trophies, 11 certificates, $1,250 in scholarships, and 15 adjudicator badges.'}
+            </p>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 {
-                  title: lang === 'cn' ? 'KAR' : 'KAR DANCE COMPETITION',
-                  detail: lang === 'cn' ? '国家级舞蹈最高荣誉' : 'National top honor for Chinese dance.',
-                  student: lang === 'cn' ? '学生：火苗班' : 'Student: Linton',
-                  dance: lang === 'cn' ? '舞目：春风' : 'Dance: Lotus Echo',
-                  awardName: lang === 'cn' ? '奖项：金奖' : 'Award: Gold Prize',
+                  title: lang === 'cn' ? '春风' : 'Spring Breeze',
+                  detail: lang === 'cn' ? 'KAR 全场第三名，海外桃李杯加拿大美国中国舞最高分。' : 'KAR Overall 3rd place; top score for Chinese dance at the Overseas Taoli Cup (Canada & U.S.).',
+                  student: lang === 'cn' ? '表演班级：火苗班' : 'Class: Huomiao',
+                  dance: lang === 'cn' ? '吴丹老师获原创作品奖' : 'Original Work Award for Ms. Wu Dan',
+                  awardName: lang === 'cn' ? '评委特别奖项 · 好莱坞舞蹈奖学金$250/人' : 'Judges Special Award · Hollywood Dance Scholarship $250/person',
                   image: '/images/award-1.jpg',
                 },
                 {
-                  title: lang === 'cn' ? 'KAR' : 'KAR DANCE COMPETITION',
-                  detail: lang === 'cn' ? '四项金奖与最佳表演' : 'Four Gold Awards and Best Performance.',
-                  student: lang === 'cn' ? '学生：启航班' : 'Student: Roxy',
-                  dance: lang === 'cn' ? '舞目：抬龙王' : 'Dance: Steps in Song',
-                  awardName: lang === 'cn' ? '奖项：最佳表演' : 'Award: Best Performance',
+                  title: lang === 'cn' ? '抬龙王' : 'Dragon King Lift',
+                  detail: lang === 'cn' ? '芝加哥全场最高分。' : 'Highest overall score in Chicago.',
+                  student: lang === 'cn' ? '表演班级：启航班' : 'Class: Qihang',
+                  dance: lang === 'cn' ? 'KAR 评委特别奖项 · 好莱坞舞蹈奖学金$250/人' : 'KAR Judges Special Award · Hollywood Dance Scholarship $250/person',
+                  awardName: lang === 'cn' ? '全场最高分' : 'Highest Overall Score',
                   image: '/images/award-2.jpg',
                 },
                 {
-                  title: lang === 'cn' ? '海外桃李杯' : 'International Dance Competition',
-                  detail: lang === 'cn' ? '金奖' : 'Top honors in Catalonia, Spain.',
-                  student: lang === 'cn' ? '学生：Fiona' : 'Student: Evan',
-                  dance: lang === 'cn' ? '舞目：醉清波' : 'Dance: Rising Wind',
-                  awardName: lang === 'cn' ? '奖项：金奖' : 'Award: Champion',
+                   title: lang === 'cn' ? '月影游龙' : 'Moonlit Dragon',
+                  detail: lang === 'cn' ? 'Jethro 独舞。' : 'Jethro solo performance.',
+                  student: lang === 'cn' ? '舞者：Jethro' : 'Dancer: Jethro',
+                  dance: lang === 'cn' ? '二等奖 ×2' : 'Second Prize ×2',
+                  awardName: lang === 'cn' ? '独舞二等奖' : 'Solo Second Prize',
                   image: '/images/award-3.jpg',
                 },
                 {
-                  title: lang === 'cn' ? '央视全国舞蹈大赛' : 'CCTV National Dance Competition',
-                  detail: lang === 'cn' ? '最佳作品奖与人气奖' : 'Best Work and Audience Choice.',
-                  student: lang === 'cn' ? '学生：Valerie' : 'Student: Annie',
-                  dance: lang === 'cn' ? '舞目：出莲' : 'Dance: Ballad of Light',
-                  awardName: lang === 'cn' ? '奖项：最佳作品' : 'Award: Best Work',
+                  title: lang === 'cn' ? '俏红狐' : 'Playful Red Fox',
+                  detail: lang === 'cn' ? '两次年龄组第一名。' : 'Two-time age division champion.',
+                  student: lang === 'cn' ? '舞者：Norah' : 'Dancer: Norah',
+                  dance: lang === 'cn' ? '全美总决赛组别第一名' : 'National finals division champion',
+                  awardName: lang === 'cn' ? 'Overall第七名' : 'Overall 7th place',
                   image: '/images/award-4.jpg',
+                },
+                {
+                  title: lang === 'cn' ? '醉清波' : 'Drunken Clear Waves',
+                  detail: lang === 'cn' ? 'Fiona 独舞。' : 'Fiona solo performance.',
+                  student: lang === 'cn' ? '舞者：Fiona' : 'Dancer: Fiona',
+                  dance: lang === 'cn' ? '海外桃李杯金奖' : 'Overseas Taoli Cup Gold Award',
+                  awardName: lang === 'cn' ? '金奖' : 'Gold Award',
+                  image: '/images/award-1.jpg',
+                },
+                {
+                  title: lang === 'cn' ? '出莲' : 'Lotus Emergence',
+                  detail: lang === 'cn' ? 'Valerie 独舞。' : 'Valerie solo performance.',
+                  student: lang === 'cn' ? '舞者：Valerie' : 'Dancer: Valerie',
+                  dance: lang === 'cn' ? 'KAR 6-8岁全场最高分' : 'KAR ages 6-8 highest overall score',
+                  awardName: lang === 'cn' ? 'Solo大赛第一名 · 舞蹈奖学金' : 'Solo competition 1st place · Dance scholarship',
+                  image: '/images/award-2.jpg',
                 },
               ].map((award, index) => (
                 <div
@@ -708,8 +729,8 @@ export default function App() {
                 </div>
                 <div className="aspect-[4/3]">
                   <img
-                    src="/images/instructor-dan.jpg"
-                    alt={lang === 'cn' ? '年度公演：敦煌之梦' : 'Annual Gala: Dunhuang Dream'}
+                    src="/images/about-1.jpg"
+                    alt={lang === 'cn' ? '2025 年度公演' : '2025 Annual Gala'}
                     className="h-full w-full object-cover"
                     loading="lazy"
                     decoding="async"
