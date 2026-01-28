@@ -280,14 +280,14 @@ export default function App() {
       ) : null}
 
       {/* Hero Section */}
-      <section id="home" className="h-[105vh] flex items-center justify-center relative overflow-hidden bg-white">
+       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-white z-10 opacity-60"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 opacity-90"></div>
           <img 
              src="/images/hero.jpg"
             alt="Dunhuang Aesthetic" 
-            className="w-full h-full object-contain opacity-[0.25] filter grayscale-[0.1] sepia-[0.2]"
+             className="w-full h-full object-cover opacity-[0.25] filter grayscale-[0.1] sepia-[0.2]"
           />
         </div>
         
@@ -296,11 +296,13 @@ export default function App() {
              <span className="text-[11px] uppercase tracking-[0.8em] opacity-40 font-bold block text-[var(--sandstone)]">
                Since 2014 · Cultural Heritage
              </span>
-             <h1 className={`text-4xl sm:text-5xl md:text-9xl font-serif text-[var(--ink)] leading-[1.1] tracking-tight ${lang === 'cn' ? 'whitespace-nowrap md:whitespace-normal' : ''}`}>
+            <h1 className="text-4xl sm:text-5xl md:text-9xl font-serif text-[var(--ink)] leading-[1.1] tracking-tight">
                {lang === 'cn' ? (
-                <span className="whitespace-nowrap md:whitespace-normal">
-                   <span className="text-[var(--mineral-red)]">丹青</span>绘舞
-                   <span className="font-calligraphy italic text-[var(--lapis-blue)] md:ml-4 md:block">
+                <span className="block">
+                   <span className="block sm:inline">
+                     <span className="text-[var(--mineral-red)]">丹青</span>绘舞
+                   </span>
+                   <span className="block font-calligraphy italic text-[var(--lapis-blue)] sm:inline sm:ml-4 md:block">
                      意在千年
                    </span>
                  </span>
@@ -354,14 +356,14 @@ export default function App() {
         <div className="lg:col-span-7 relative">
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-6 pt-12">
-               <img src="/images/about-1.jpg" className="rounded-[3.5rem] h-[500px] w-full object-contain shadow-2xl" alt="Dance Art" />
+               <img src="/images/about-1.jpg" className="rounded-[3.5rem] w-full h-auto object-cover shadow-2xl" alt="Dance Art" />
                <div className="rounded-[2.5rem] h-[250px] w-full bg-soft-blue flex items-center justify-center p-8 text-center italic opacity-70 font-serif border border-[var(--lapis-blue)]/10 text-[var(--lapis-blue)]">
                   {lang === 'cn' ? '“舞如丹青，身如墨笔”' : '"Dance like a painting, the body as the ink brush"'}
                </div>
             </div>
             <div className="space-y-6">
-               <img src="/images/about-2.jpg" className="rounded-[3.5rem] h-[400px] w-full object-contain shadow-xl" alt="Stage Moment" />
-               <img src="/images/about-3.jpg" className="rounded-[2.5rem] h-[350px] w-full object-contain shadow-lg opacity-90 filter brightness-[1.1]" alt="Dunhuang Step" />
+              <img src="/images/about-2.jpg" className="rounded-[3.5rem] w-full h-auto object-cover shadow-xl" alt="Stage Moment" />
+               <img src="/images/about-3.jpg" className="rounded-[2.5rem] w-full h-auto object-cover shadow-lg opacity-90 filter brightness-[1.1]" alt="Dunhuang Step" />
             </div>
           </div>
         </div>
@@ -561,34 +563,34 @@ export default function App() {
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 {
-                  title: lang === 'cn' ? '中国舞荷花奖' : 'China Lotus Award',
+                  title: lang === 'cn' ? 'KAR' : 'KAR DANCE COMPETITION',
                   detail: lang === 'cn' ? '国家级舞蹈最高荣誉' : 'National top honor for Chinese dance.',
-                  student: lang === 'cn' ? '学生：林语彤' : 'Student: Linton',
-                  dance: lang === 'cn' ? '舞目：莲影' : 'Dance: Lotus Echo',
+                  student: lang === 'cn' ? '学生：火苗班' : 'Student: Linton',
+                  dance: lang === 'cn' ? '舞目：春风' : 'Dance: Lotus Echo',
                   awardName: lang === 'cn' ? '奖项：金奖' : 'Award: Gold Prize',
                   image: '/images/award-1.jpg',
                 },
                 {
-                  title: lang === 'cn' ? '北京学生艺术节' : 'Beijing Student Arts Festival',
+                  title: lang === 'cn' ? 'KAR' : 'KAR DANCE COMPETITION',
                   detail: lang === 'cn' ? '四项金奖与最佳表演' : 'Four Gold Awards and Best Performance.',
-                  student: lang === 'cn' ? '学生：陈若溪' : 'Student: Roxy',
-                  dance: lang === 'cn' ? '舞目：踏歌行' : 'Dance: Steps in Song',
+                  student: lang === 'cn' ? '学生：启航班' : 'Student: Roxy',
+                  dance: lang === 'cn' ? '舞目：抬龙王' : 'Dance: Steps in Song',
                   awardName: lang === 'cn' ? '奖项：最佳表演' : 'Award: Best Performance',
                   image: '/images/award-2.jpg',
                 },
                 {
-                  title: lang === 'cn' ? '国际舞蹈大赛' : 'International Dance Competition',
-                  detail: lang === 'cn' ? '西班牙卡塔罗尼亚赛区冠军' : 'Top honors in Catalonia, Spain.',
-                  student: lang === 'cn' ? '学生：郭伊凡' : 'Student: Evan',
-                  dance: lang === 'cn' ? '舞目：风起' : 'Dance: Rising Wind',
-                  awardName: lang === 'cn' ? '奖项：冠军' : 'Award: Champion',
+                  title: lang === 'cn' ? '海外桃李杯' : 'International Dance Competition',
+                  detail: lang === 'cn' ? '金奖' : 'Top honors in Catalonia, Spain.',
+                  student: lang === 'cn' ? '学生：Fiona' : 'Student: Evan',
+                  dance: lang === 'cn' ? '舞目：醉清波' : 'Dance: Rising Wind',
+                  awardName: lang === 'cn' ? '奖项：金奖' : 'Award: Champion',
                   image: '/images/award-3.jpg',
                 },
                 {
                   title: lang === 'cn' ? '央视全国舞蹈大赛' : 'CCTV National Dance Competition',
                   detail: lang === 'cn' ? '最佳作品奖与人气奖' : 'Best Work and Audience Choice.',
-                  student: lang === 'cn' ? '学生：苏安宁' : 'Student: Annie',
-                  dance: lang === 'cn' ? '舞目：长歌行' : 'Dance: Ballad of Light',
+                  student: lang === 'cn' ? '学生：Valerie' : 'Student: Annie',
+                  dance: lang === 'cn' ? '舞目：出莲' : 'Dance: Ballad of Light',
                   awardName: lang === 'cn' ? '奖项：最佳作品' : 'Award: Best Work',
                   image: '/images/award-4.jpg',
                 },
