@@ -289,7 +289,7 @@ export default function App() {
              <span className="text-[11px] uppercase tracking-[0.8em] opacity-40 font-bold block text-[var(--sandstone)]">
                Since 2014 · Cultural Heritage
              </span>
-             <h1 className="text-6xl md:text-9xl font-serif text-[var(--ink)] leading-[1.1] tracking-tight">
+             <h1 className={`text-4xl sm:text-5xl md:text-9xl font-serif text-[var(--ink)] leading-[1.1] tracking-tight ${lang === 'cn' ? 'whitespace-nowrap md:whitespace-normal' : ''}`}>
                {lang === 'cn' ? (
                  <>
                    <span className="text-[var(--mineral-red)]">丹青</span>绘舞 <br className="hidden md:block" />
