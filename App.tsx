@@ -780,7 +780,7 @@ export default function App() {
                 </div>
                 <div className="aspect-[4/3]">
                   <img
-                    src="/event/event-group-photo.png"
+                    src="/event/event-25-cover.png"
                     alt={lang === 'cn' ? '2025 年终晚会' : '2025 End of Year Gala'}
                     className="h-full w-full object-cover"
                     loading="lazy"
