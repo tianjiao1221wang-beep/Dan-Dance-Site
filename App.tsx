@@ -754,41 +754,7 @@ export default function App() {
           </div>
          
           <div className="space-y-28">
-            <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="p-12 lg:p-16 space-y-6">
-                  <div className="flex items-center gap-3 text-[var(--mineral-red)]">
-                    <Calendar size={18} />
-                    <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
-                   </div>
-                  <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
-                    {lang === 'cn' ? '2024 年终晚会' : '2024 End of Year Gala'}
-                  </h3>
-                  <p className="text-base opacity-60 font-light leading-loose">
-                    {lang === 'cn'
-                      ? '丹·舞蹈学院年终舞蹈专场晚会，汇聚多元舞种，展现梦想与传承之美。'
-                      : 'Dan Dance Academy end of year gala, showcasing diverse dance styles and the beauty of dreams and cultural heritage.'}
-                  </p>
-                  <button
-                    onClick={() => setOpenGallery('2024')}
-                    className="nav-link py-4 px-10 font-bold text-xs"
-                    style={{ backgroundColor: 'var(--mineral-red)', color: 'white' }}
-                  >
-                    {lang === 'cn' ? '查看相册' : 'View Gallery'}
-                  </button>
-                </div>
-                <div className="aspect-[4/3]">
-                  <img
-                    src="/event/event-24-1.png"
-                    alt={lang === 'cn' ? '2024 年终晚会' : '2024 End of Year Gala'}
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </div>
-                  </div>
-            </div>
-
+            {/* 2025 年终晚会 - 最新活动 */}
             <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="p-12 lg:p-16 space-y-6">
@@ -814,8 +780,44 @@ export default function App() {
                 </div>
                 <div className="aspect-[4/3]">
                   <img
-                    src="/event/event-25-1.png"
+                    src="/event/event-group-photo.png"
                     alt={lang === 'cn' ? '2025 年终晚会' : '2025 End of Year Gala'}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                  </div>
+            </div>
+
+            {/* 2024 年终晚会 */}
+            <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-12 lg:p-16 space-y-6">
+                  <div className="flex items-center gap-3 text-[var(--mineral-red)]">
+                    <Calendar size={18} />
+                    <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
+                   </div>
+                  <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
+                    {lang === 'cn' ? '2024 年终晚会' : '2024 End of Year Gala'}
+                  </h3>
+                  <p className="text-base opacity-60 font-light leading-loose">
+                    {lang === 'cn'
+                      ? '丹·舞蹈学院年终舞蹈专场晚会，汇聚多元舞种，展现梦想与传承之美。'
+                      : 'Dan Dance Academy end of year gala, showcasing diverse dance styles and the beauty of dreams and cultural heritage.'}
+                  </p>
+                  <button
+                    onClick={() => setOpenGallery('2024')}
+                    className="nav-link py-4 px-10 font-bold text-xs"
+                    style={{ backgroundColor: 'var(--mineral-red)', color: 'white' }}
+                  >
+                    {lang === 'cn' ? '查看相册' : 'View Gallery'}
+                  </button>
+                </div>
+                <div className="aspect-[4/3]">
+                  <img
+                    src="/event/event-group-photo.png"
+                    alt={lang === 'cn' ? '2024 年终晚会' : '2024 End of Year Gala'}
                     className="h-full w-full object-cover"
                     loading="lazy"
                     decoding="async"
@@ -896,7 +898,7 @@ export default function App() {
                <div className="w-28 h-28 bg-[var(--parchment)] rounded-3xl p-3 flex items-center justify-center border border-[var(--sandstone)]/10 shadow-inner">
                  <div className="w-full h-full border border-dashed border-[var(--sandstone)]/30 rounded-2xl flex items-center justify-center">
                     <img
-                      src="/images/contact-wechat.jpg"
+                      src="/images/contact-wechat.png"
                       alt="WeChat QR code"
                       className="w-full h-full object-contain"
                     />
@@ -914,7 +916,7 @@ export default function App() {
               </div>
               <div className="space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.childAge[lang]}</label>
-                <input name="childAge" required type="number" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
+                <input name="childAge" required type="text" inputMode="numeric" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder={lang === 'cn' ? '请输入孩子年龄' : 'Enter age'} />
               </div>
               <div className="md:col-span-2 space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.phone[lang]}</label>
