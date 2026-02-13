@@ -1,1 +1,4 @@
 node_modules/
+
+# Large video files (GitHub limit 100MB)
+public/event/gala-2025.mp4

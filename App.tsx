@@ -16,9 +16,14 @@ import {
   Calendar,
   Compass,
   Heart,
-  Sparkles
+  Sparkles,
+  CheckCircle,
+  AlertCircle
 } from 'lucide-react';
 import { translations, Language } from './translations';
+
+// Formspree form ID from https://formspree.io/f/xjgeyapj
+const FORMSPREE_FORM_ID = 'xjgeyapj';
 
 // --- Helper Components ---
 
@@ -169,14 +174,12 @@ const Footer: React.FC<{ lang: Language; onNav: (id: string) => void }> = ({ lan
 
 export default function App() {
   const [lang, setLang] = useState<Language>('cn');
-  const [isGalleryOpen, setIsGalleryOpen] = useState(false);
- const pastEventGallery = [
-    '/event/event-1.jpg',
-    '/event/event-2.jpg',
-    '/event/event-3.jpg',
-    '/event/event-4.jpg',
-    '/event/event-5.jpg',
-  ];
+  const [openGallery, setOpenGallery] = useState<'2024' | '2025' | null>(null);
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const pastEvents = {
+    '2024': { images: Array.from({ length: 22 }, (_, i) => `/event/event-24-${i + 1}.png`), video: null },
+    '2025': { images: Array.from({ length: 36 }, (_, i) => `/event/event-25-${i + 1}.png`), video: null },
+  };
   const fallbackInstructorImage = '/images/instructor-dan.jpg';
   const studentStories = [
     { 
@@ -226,30 +229,62 @@ export default function App() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
-  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleContactSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = String(formData.get('parentName') ?? '');
     const childAge = String(formData.get('childAge') ?? '');
     const phone = String(formData.get('phone') ?? '');
+    const email = String(formData.get('email') ?? '');
     const message = String(formData.get('message') ?? '');
     const subject = lang === 'cn' ? '丹·舞蹈学院咨询' : 'Dan Dance Academy Inquiry';
-    const body = [
-      `${lang === 'cn' ? '家长姓名' : 'Parent Name'}: ${name}`,
-      `${lang === 'cn' ? '孩子年龄' : "Child's Age"}: ${childAge}`,
-      `${lang === 'cn' ? '联系电话' : 'Phone'}: ${phone}`,
-      `${lang === 'cn' ? '咨询内容' : 'Message'}: ${message}`
-    ].join('\n');
-    window.location.href = `mailto:sipbrush@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (FORMSPREE_FORM_ID) {
+      setFormStatus('submitting');
+      try {
+        const res = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            _subject: subject,
+            _replyto: email || undefined,
+            parentName: name,
+            childAge,
+            phone,
+            email,
+            message,
+            website: 'Dan Dance Academy',
+          }),
+        });
+        if (res.ok) {
+          setFormStatus('success');
+          form.reset();
+        } else {
+          setFormStatus('error');
+        }
+      } catch {
+        setFormStatus('error');
+      }
+    } else {
+      const body = [
+        `${lang === 'cn' ? '家长姓名' : 'Parent Name'}: ${name}`,
+        `${lang === 'cn' ? '孩子年龄' : "Child's Age"}: ${childAge}`,
+        `${lang === 'cn' ? '联系电话' : 'Phone'}: ${phone}`,
+        `${lang === 'cn' ? '电子邮箱' : 'Email'}: ${email}`,
+        `${lang === 'cn' ? '咨询内容' : 'Message'}: ${message}`
+      ].join('\n');
+      window.location.href = `mailto:sipbrush@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
   };
     return (
     <div className="relative">
       <Navbar lang={lang} setLang={setLang} onNav={scrollToSection} />
-{isGalleryOpen ? (
+{openGallery ? (
          <div className="fixed inset-0 z-[90] flex items-center justify-center px-6">
           <div
             className="absolute inset-0 bg-black/65 backdrop-blur-sm"
-            onClick={() => setIsGalleryOpen(false)}
+            onClick={() => setOpenGallery(null)}
           ></div>
           <div className="relative z-10 max-w-5xl w-full max-h-[85vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-8">
@@ -258,18 +293,18 @@ export default function App() {
                   {lang === 'cn' ? '往期回顾' : 'Past Event Gallery'}
                 </p>
                  <h3 className="text-3xl md:text-4xl font-serif text-white">
-                  {lang === 'cn' ? '2025 年度公演' : '2025 Annual Gala'}
+                  {lang === 'cn' ? `${openGallery} 年终晚会` : `${openGallery} End of Year Gala`}
                 </h3>
               </div>
               <button
-                onClick={() => setIsGalleryOpen(false)}
+                onClick={() => setOpenGallery(null)}
                 className="nav-link px-6 py-3 text-xs font-bold text-white border-white/40 hover:border-white"
               >
                 {lang === 'cn' ? '关闭' : 'Close'}
               </button>
             </div>
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6">
-              {pastEventGallery.map((src) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-6">
+              {pastEvents[openGallery].images.map((src) => (
                  <div key={src} className="rounded-[2.5rem] overflow-hidden shadow-xl bg-white/90">
                   <img src={src} alt="Past event highlight" className="w-full h-auto object-contain" />
                 </div>
@@ -406,7 +441,7 @@ export default function App() {
                 <div className="h-72 overflow-hidden relative">
                   <img
                     src={cls.img}
-                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                    className={`w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${cls.img === '/images/class-elite.jpg' ? 'object-[70%_center]' : ''}`}
                     alt={cls.title}
                     loading="lazy"
                     decoding="async"
@@ -453,16 +488,15 @@ export default function App() {
                 name: lang === 'cn' ? '吴丹' : 'Dan Wu',
                 role: lang === 'cn' ? '古典舞|民族舞|芭蕾基训 主教 · 创始人' : 'CHINESE DANCE TEACHING LEAD · FOUNDER',
                 desc: lang === 'cn'
-                  ? `首都师范大学本科，四岁开始学习中国舞基本功，大一开始钻研中国舞舞蹈文化，着重于舞蹈和表演间结合。
-                  曾获得荷花奖并多次参演中国春晚舞台，曾为河北空军文艺分队演员。少年时期参演《娃娃雨》《闪闪红星》《跃动》等节目荣获中央电视台“最佳人气奖”，领舞《渔翁舞》曾获省级表演奖。
-                  考入首都师范大学、北京师范大学多所艺术专业院校的录取通知书。最大的梦想是能成为一名传承中国舞文化的教师。
-                  之后，赴美留学获得临床心理学和犯罪心理学双学士学位和婚姻家庭心理学硕士学位。持续研究儿童与父母等家庭关系，致力于把舞蹈融入心理疏导的过程中，并登上伊利诺伊大学关于舞蹈心理学的演讲台。
-                  大学期间，在美创办中国舞蹈团，曾为伊利诺伊州音乐学院特邀导演，所带领团队多次参演国际节并作为中国舞编导登上州报头条。毕业前的最后一年，带领自己的学生在州政府剧院演出唯一一届中国舞蹈文化公益演出，累计不同国家演员观众中国文化，演出跨场超过60次。
-                  硕士毕业后，坚持“有人艺术，无为过往，无为现在，而为未来”的核心思想创办艺术学校，带领每位学员自信舞蹈，心无旁骛，无畏挑战。`.trim()
-                  : `Graduated from Capital Normal University with a bachelor’s degree. Dan began studying Chinese dance fundamentals at the age of four and later focused on integrating Chinese dance with stage performance and cultural expression in university.
-                  She has received the prestigious Lotus Award and performed multiple times in China’s official Spring Festival Gala. She also volunteered for performance tours with the Hebei Air Force District.
-                  As a young dancer, she participated in programs such as Frog Play, Sparkling Red Star, and Dancing in the Rain, receiving CCTV’s “Most Popular Performer” award. Her leading performance in Fisherman's Joy won a provincial award.
-                  She was accepted into multiple prestigious dance programs including Capital Normal University and Northeast Normal University. Her biggest dream has always been to become a teacher dedicated to passing on the art of Chinese dance.`.trim(),
+                  ? `首都师范大学舞蹈本科，四岁开始学习中国舞基本功，着重于舞蹈和表演间结合。
+                  曾获得荷花奖并多次参演中国春晚舞台，曾为河北空军文艺分队演员。少时参演《踩雨》《闪闪红星》《跃动》等节目荣获中央电视台“最佳人气奖”，领舞《渔翁乐》曾获省级表演奖。
+                  在中国带过的学生曾获得小荷风采奖项，并参与舞动中国梦等央视展演。在美国带过的学生曾获得Shoestoppers、KAR、Rainbow、桃李杯等国际奖项。最大的梦想是能成为一名传承中国舞文化的老师！让世界听见东方的声音，感受东方的力量！
+                  之后，赴美留学获得临床心理学和犯罪心理学双学士学位和婚姻家庭心理学硕士学位。持续研究儿童心理学，致力于把舞蹈融入心理疏导的过程中，曾登上伊利诺伊大学关于舞蹈心理学的演讲台。大学期间，在美创办中国舞蹈团，曾为伊利诺伊华人春晚特邀舞蹈节目导演，所带领团队多次参演国际节并作为中国舞编导登上州报头条。毕业前的最后一年，带领自己的学生在州政府剧院演出唯一一届中国舞蹈文化公益演出，累计7个不同国家演员们登上中国文化舞台，演员年龄跨度超60岁。
+                  硕士毕业后，坚持“育人艺术，无为过往，无为现在，而为将来”的核心思想创办艺术学校，带领每位学员自信舞蹈，心无旁骛，无畏挑战！`.trim()
+                  : `Dan Wu holds a B.A. in Dance from Capital Normal University. She began studying Chinese dance fundamentals at age four and specializes in the integration of dance and performance.
+                  She has received the prestigious Lotus Award and performed multiple times on China's Spring Festival Gala stage. She also served as an artist with the Hebei Air Force District cultural troupe.
+                  As a young dancer, she performed in programs such as Stepping in the Rain, Sparkling Red Star, and Leaping, receiving CCTV’s “Most Popular Performer” award. Her leading role in Fisherman's Joy won a provincial performance award. Students she trained in China have won Little Lotus awards and performed in national TV showcases such as Dance Dreams of China. Students she has trained in the U.S. have won international awards at Showstoppers, KAR, Rainbow, and the Taoli Cup. Her greatest dream is to become a teacher who passes on Chinese dance culture—to let the world hear the voice of the East and feel the power of the East!
+                  She then studied in the U.S., earning dual bachelor's degrees in clinical psychology and criminal psychology, and a master's degree in marriage and family therapy. She continues to research child psychology and integrate dance into the therapeutic process. She has spoken on dance psychology at the University of Illinois. During her university years, she founded a Chinese dance troupe in the U.S. and served as guest choreographer for the Illinois Chinese New Year Gala. Her teams have performed at international festivals, and she has been featured in state news as a Chinese dance choreographer. In her final year before graduation, she led her students in the sole Chinese dance cultural charity performance at the state capitol theater, bringing together performers from seven countries with an age span of over 60 years. After earning her master's degree, she founded her arts academy with the philosophy: "Nurture through art—not for the past, not for the present, but for the future." She guides every student to dance with confidence, focus, and courage.`.trim(),
                 color: 'var(--mineral-red)',
                 img: '/images/instructor-dan.jpg'
               },
@@ -562,58 +596,74 @@ export default function App() {
             </h2>
              <p className="text-base opacity-60 leading-relaxed font-light">
               {lang === 'cn'
-                ? '2025年累计：7块个人荣誉奖牌、8座奖杯、11张证书、$1250奖学金、15个评委徽章。'
-                : '2025 totals: 7 individual honor medals, 8 trophies, 11 certificates, $1,250 in scholarships, and 15 adjudicator badges.'}
+                ? '2025年累计：7块个人荣誉奖牌、8座奖杯、11张证书、Hollywood Dance Scholarship、15个评委徽章。'
+                : '2025 totals: 7 individual honor medals, 8 trophies, 11 certificates, Hollywood Dance Scholarship, and 15 adjudicator badges.'}
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 {
                   title: lang === 'cn' ? '春风' : 'Spring Breeze',
-                  detail: lang === 'cn' ? 'KAR 全场第三名，海外桃李杯加拿大美国中国舞最高分。' : 'KAR Overall 3rd place; top score for Chinese dance at the Overseas Taoli Cup (Canada & U.S.).',
+                  detail: lang === 'cn' ? 'Rainbow 全场第三名 · 海外桃李杯加拿大美国中国舞十佳铂金奖' : 'Rainbow Overall 3rd place · Overseas Taoli Cup (Canada & U.S.) Top Ten Platinum Gold for Chinese Dance',
                   student: lang === 'cn' ? '表演班级：火苗班' : 'Class: Huomiao',
-                  dance: lang === 'cn' ? '吴丹老师获原创作品奖' : 'Original Work Award for Ms. Wu Dan',
-                  awardName: lang === 'cn' ? '评委特别奖项 · 好莱坞舞蹈奖学金$250/人' : 'Judges Special Award · Hollywood Dance Scholarship $250/person',
+                  dance: lang === 'cn' ? '吴丹老师原创作品奖' : 'Original Work Award for Ms. Wu Dan',
+                  awardName: lang === 'cn' ? '评委最喜爱舞蹈徽章' : "Judges' Favorite Dance Badge",
                   image: '/images/award-1.jpg',
                 },
                 {
                   title: lang === 'cn' ? '抬龙王' : 'Dragon King Lift',
-                  detail: lang === 'cn' ? '芝加哥全场最高分。' : 'Highest overall score in Chicago.',
-                  student: lang === 'cn' ? '表演班级：启航班' : 'Class: Qihang',
-                  dance: lang === 'cn' ? 'KAR 评委特别奖项 · 好莱坞舞蹈奖学金$250/人' : 'KAR Judges Special Award · Hollywood Dance Scholarship $250/person',
-                  awardName: lang === 'cn' ? '全场最高分' : 'Highest Overall Score',
+                  detail: lang === 'cn' ? 'Rainbow 全场第五名 · Judges Choice 徽章' : 'Rainbow Overall 5th place · Judges Choice Badge',
+                  student: lang === 'cn' ? '表演班级：盛开班' : 'Class: Shenkai',
+                  dance: lang === 'cn' ? '好莱坞舞蹈助学金 $250/人' : 'Hollywood Dance Scholarship $250/person',
+                  awardName: lang === 'cn' ? 'Judges Choice 徽章' : 'Judges Choice Badge',
                   image: '/images/award-2.jpg',
                 },
                 {
                    title: lang === 'cn' ? '月影游龙' : 'Moonlit Dragon',
-                  detail: lang === 'cn' ? 'Jethro 独舞。' : 'Jethro solo performance.',
+                  detail: lang === 'cn' ? 'Platinum 年龄组第二名 · Showstoppers 年龄组第二名' : 'Platinum Age Division 2nd · Showstoppers Age Division 2nd',
                   student: lang === 'cn' ? '舞者：Jethro' : 'Dancer: Jethro',
-                  dance: lang === 'cn' ? '二等奖 ×2' : 'Second Prize ×2',
-                  awardName: lang === 'cn' ? '独舞二等奖' : 'Solo Second Prize',
-                  image: '/images/award-3.jpg',
+                  dance: lang === 'cn' ? 'Platinum / Showstoppers 双料二等奖' : 'Platinum & Showstoppers Second Place',
+                  awardName: lang === 'cn' ? '年龄组第二名 ×2' : 'Age Division 2nd Place ×2',
+                  image: '/images/award-3.png',
                 },
                 {
-                  title: lang === 'cn' ? '俏红狐' : 'Playful Red Fox',
-                  detail: lang === 'cn' ? '两次年龄组第一名。' : 'Two-time age division champion.',
+                  title: lang === 'cn' ? '俏灵狐' : 'Cunning Spirit Fox',
+                  detail: lang === 'cn' ? 'Rainbow 年龄组第一名 · Showstoppers 年龄组第一名' : 'Rainbow Age Division 1st · Showstoppers Age Division 1st',
                   student: lang === 'cn' ? '舞者：Norah' : 'Dancer: Norah',
-                  dance: lang === 'cn' ? '全美总决赛组别第一名' : 'National finals division champion',
-                  awardName: lang === 'cn' ? 'Overall第七名' : 'Overall 7th place',
-                  image: '/images/award-4.jpg',
+                  dance: lang === 'cn' ? 'Rainbow / Showstoppers 双料第一名' : 'Rainbow & Showstoppers Champion',
+                  awardName: lang === 'cn' ? 'Overall 第七名' : 'Overall 7th place',
+                  image: '/images/award-4.png',
                 },
                 {
                   title: lang === 'cn' ? '醉清波' : 'Drunken Clear Waves',
-                  detail: lang === 'cn' ? 'Fiona 独舞。' : 'Fiona solo performance.',
+                  detail: lang === 'cn' ? '海外桃李杯加拿大美国中国舞十佳铂金奖' : 'Overseas Taoli Cup (Canada & U.S.) Top Ten Platinum Gold for Chinese Dance',
                   student: lang === 'cn' ? '舞者：Fiona' : 'Dancer: Fiona',
-                  dance: lang === 'cn' ? '海外桃李杯金奖' : 'Overseas Taoli Cup Gold Award',
-                  awardName: lang === 'cn' ? '金奖' : 'Gold Award',
-                  image: '/images/award-1.jpg',
+                  dance: lang === 'cn' ? '独舞十佳铂金奖' : 'Solo Top Ten Platinum Gold',
+                  awardName: lang === 'cn' ? '海外桃李杯十佳铂金奖' : 'Overseas Taoli Cup Top Ten Platinum Gold',
+                  image: '/images/award-5.png',
                 },
                 {
                   title: lang === 'cn' ? '出莲' : 'Lotus Emergence',
-                  detail: lang === 'cn' ? 'Valerie 独舞。' : 'Valerie solo performance.',
+                  detail: lang === 'cn' ? 'KAR 年龄组第一名 · Overall 最高分 · Rainbow 年龄组第二名 · 海外桃李杯十佳铂金奖' : 'KAR Age Division 1st · Overall Highest Score · Rainbow Age Division 2nd · Overseas Taoli Cup Top Ten Platinum Gold',
                   student: lang === 'cn' ? '舞者：Valerie' : 'Dancer: Valerie',
-                  dance: lang === 'cn' ? 'KAR 6-8岁全场最高分' : 'KAR ages 6-8 highest overall score',
-                  awardName: lang === 'cn' ? 'Solo大赛第一名 · 舞蹈奖学金' : 'Solo competition 1st place · Dance scholarship',
+                  dance: lang === 'cn' ? '吴丹老师原创作品奖' : 'Original Work Award for Ms. Wu Dan',
+                  awardName: lang === 'cn' ? 'KAR/Overall/Rainbow/桃李杯 多料奖项' : 'KAR & Overall & Rainbow & Taoli Cup Awards',
                   image: '/images/award-2.jpg',
+                },
+                {
+                  title: lang === 'cn' ? '雨霖铃' : 'Rain on the Leaves',
+                  detail: lang === 'cn' ? 'Showstoppers 年龄组第一名' : 'Showstoppers Age Division 1st Place',
+                  student: lang === 'cn' ? '舞者：Lydia' : 'Dancer: Lydia',
+                  dance: lang === 'cn' ? '独舞年龄组冠军' : 'Solo Age Division Champion',
+                  awardName: lang === 'cn' ? 'Showstoppers 年龄组第一' : 'Showstoppers Age Division 1st',
+                  image: '/images/award-7.png',
+                },
+                {
+                  title: lang === 'cn' ? '玉鸟' : 'Jade Bird',
+                  detail: lang === 'cn' ? 'Rainbow 年龄组第三名' : 'Rainbow Age Division 3rd Place',
+                  student: lang === 'cn' ? '舞者：Abby' : 'Dancer: Abby',
+                  dance: lang === 'cn' ? '独舞年龄组季军' : 'Solo Age Division 3rd',
+                  awardName: lang === 'cn' ? 'Rainbow 年龄组第三' : 'Rainbow Age Division 3rd',
+                  image: '/images/award-8.png',
                 },
               ].map((award, index) => (
                 <div
@@ -712,15 +762,15 @@ export default function App() {
                     <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
                    </div>
                   <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
-                    {lang === 'cn' ? '2025 年度公演' : '2025 Annual Gala'}
+                    {lang === 'cn' ? '2024 年终晚会' : '2024 End of Year Gala'}
                   </h3>
                   <p className="text-base opacity-60 font-light leading-loose">
                     {lang === 'cn'
-                      ? '芝加哥DanDance艺术学校三周年庆舞蹈专场晚会，汇聚多元舞种，展现梦想与传承之美。'
-                      : 'A special dance gala celebrating DanDance Art Academy’s 3rd anniversary in Chicago, showcasing diverse styles and the beauty of dreams and cultural heritage.'}
+                      ? '丹·舞蹈学院年终舞蹈专场晚会，汇聚多元舞种，展现梦想与传承之美。'
+                      : 'Dan Dance Academy end of year gala, showcasing diverse dance styles and the beauty of dreams and cultural heritage.'}
                   </p>
                   <button
-                    onClick={() => setIsGalleryOpen(true)}
+                    onClick={() => setOpenGallery('2024')}
                     className="nav-link py-4 px-10 font-bold text-xs"
                     style={{ backgroundColor: 'var(--mineral-red)', color: 'white' }}
                   >
@@ -729,8 +779,43 @@ export default function App() {
                 </div>
                 <div className="aspect-[4/3]">
                   <img
-                    src="/images/about-1.jpg"
-                    alt={lang === 'cn' ? '2025 年度公演' : '2025 Annual Gala'}
+                    src="/event/event-24-1.png"
+                    alt={lang === 'cn' ? '2024 年终晚会' : '2024 End of Year Gala'}
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                  </div>
+            </div>
+
+            <div className="rounded-[3.5rem] bg-white shadow-xl border border-[var(--lapis-blue)]/10 overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-12 lg:p-16 space-y-6">
+                  <div className="flex items-center gap-3 text-[var(--mineral-red)]">
+                    <Calendar size={18} />
+                    <span className="text-sm uppercase tracking-[0.4em] font-semibold opacity-60">{lang === 'cn' ? '往期回顾' : 'Past Event'}</span>
+                   </div>
+                  <h3 className="text-3xl md:text-4xl font-serif text-[var(--mineral-red)]">
+                    {lang === 'cn' ? '2025 年终晚会' : '2025 End of Year Gala'}
+                  </h3>
+                  <p className="text-base opacity-60 font-light leading-loose">
+                    {lang === 'cn'
+                      ? '丹·舞蹈学院年终舞蹈专场晚会，汇聚多元舞种，展现梦想与传承之美。'
+                      : 'Dan Dance Academy end of year gala, showcasing diverse dance styles and the beauty of dreams and cultural heritage.'}
+                  </p>
+                  <button
+                    onClick={() => setOpenGallery('2025')}
+                    className="nav-link py-4 px-10 font-bold text-xs"
+                    style={{ backgroundColor: 'var(--mineral-red)', color: 'white' }}
+                  >
+                    {lang === 'cn' ? '查看相册' : 'View Gallery'}
+                  </button>
+                </div>
+                <div className="aspect-[4/3]">
+                  <img
+                    src="/event/event-25-1.png"
+                    alt={lang === 'cn' ? '2025 年终晚会' : '2025 End of Year Gala'}
                     className="h-full w-full object-cover"
                     loading="lazy"
                     decoding="async"
@@ -764,8 +849,8 @@ export default function App() {
                     </button>
                   </div>
                 </div>
-                <div className="aspect-[4/3]">
-                  <img src="/images/instructor-angel.jpg" className="h-full w-full object-cover" alt={lang === 'cn' ? '春季大师集训营' : 'Spring Master Class'} />
+                <div className="aspect-[4/3] bg-[var(--lapis-blue)]/5 flex items-center justify-center border border-dashed border-[var(--lapis-blue)]/20">
+                  <span className="text-[10px] uppercase tracking-[0.5em] opacity-30 text-[var(--lapis-blue)]">{lang === 'cn' ? '敬请期待' : 'Coming Soon'}</span>
                 </div>
               </div>
              </div>
@@ -802,7 +887,7 @@ export default function App() {
                  </div>
                  <div className="space-y-2">
                    <p className="text-[11px] uppercase tracking-widest opacity-30 font-bold text-[var(--mineral-red)]">{lang === 'cn' ? '咨询专线' : 'Phone'}</p>
-                   <p className="text-lg font-medium">+1 (217) 220-5246</p>
+                   <p className="text-lg font-medium">+1 (312) 809-5885</p>
                  </div>
                </div>
             </div>
@@ -836,12 +921,32 @@ export default function App() {
                 <input name="phone" required type="tel" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
               </div>
               <div className="md:col-span-2 space-y-3">
+                <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.email[lang]}</label>
+                <input name="email" type="email" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder="..." />
+              </div>
+              <div className="md:col-span-2 space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.message[lang]}</label>
                 <textarea name="message" rows={4} className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all resize-none font-light text-lg" placeholder="..."></textarea>
               </div>
-              <div className="md:col-span-2 pt-10">
-                <button type="submit" className="block-button bg-red w-full md:w-auto text-sm uppercase tracking-[0.4em] font-bold py-6 px-20">
-                  {translations.contact.submit[lang]}
+              <div className="md:col-span-2 pt-10 space-y-4">
+                {formStatus === 'success' && (
+                  <div className="flex items-center gap-3 text-[var(--jade)] text-sm">
+                    <CheckCircle size={20} />
+                    <span>{lang === 'cn' ? '咨询已提交！我们会尽快与您联系。' : 'Inquiry sent! We will contact you soon.'}</span>
+                  </div>
+                )}
+                {formStatus === 'error' && (
+                  <div className="flex items-center gap-3 text-[var(--mineral-red)] text-sm">
+                    <AlertCircle size={20} />
+                    <span>{lang === 'cn' ? '提交失败，请稍后再试或直接致电联系我们。' : 'Submission failed. Please try again or contact us by phone.'}</span>
+                  </div>
+                )}
+                <button
+                  type="submit"
+                  disabled={formStatus === 'submitting'}
+                  className="block-button bg-red w-full md:w-auto text-sm uppercase tracking-[0.4em] font-bold py-6 px-20 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {formStatus === 'submitting' ? (lang === 'cn' ? '提交中...' : 'Sending...') : translations.contact.submit[lang]}
                 </button>
               </div>
             </form>

@@ -42,6 +42,7 @@ export const translations = {
     name: { cn: '家长姓名', en: 'Parent Name' },
     childAge: { cn: '孩子年龄', en: "Child's Age" },
     phone: { cn: '联系电话', en: 'Phone Number' },
+    email: { cn: '电子邮箱', en: 'Email' },
     message: { cn: '您的咨询内容', en: 'Your Inquiry' },
     submit: { cn: '提交咨询', en: 'Submit Inquiry' },
   }
