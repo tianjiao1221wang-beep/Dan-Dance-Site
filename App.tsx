@@ -184,7 +184,7 @@ export default function App() {
   const studentStories = [
     { 
       name: 'Norah Lin', 
-      age: 9, 
+      age: 8, 
       quote: {
         cn: '2023年加入DanDance艺术学校，从零开始打基础一直到让自己无比热爱中国舞。\nNorah妈妈说她从来不用担心Norah会懈怠，因为她会给自己留舞蹈作业，每天自己对着镜子重复无数次一样的动作直到让自己满意为止。\n正是对舞蹈的这份热爱，让Norah拥有了坚韧不拔的品质，并在两年后的Showstoppers、KAR、Rainbow等舞蹈大赛中斩获同年龄段第一名和Overall总成绩第七名的成绩。\nNorah Lin：“不是我选择了舞蹈，而是舞蹈选择了我，是舞蹈让我变成了更漂亮的人。”',
         en: 'From initial shyness to confident curtain calls, dance has shaped not just her posture, but her resilient heart.\nShe practices on her own after class, repeating sequences until she is satisfied with each detail.\nThe dedication has turned into top placements at regional competitions and a stronger sense of self.'
@@ -194,7 +194,7 @@ export default function App() {
     },
     { 
       name: 'Jethro Lee', 
-      age: 12, 
+      age: 10, 
       quote: {
         cn: '2024年加入DanDance艺术学校学习中国舞课程，Jethro一直对中国舞饱有浓厚的兴趣。\n虽然比同班级的同学们开始学习舞蹈的时间更晚，但他在课堂中积极努力，回家后还自律练习。\n一年后的Showstoppers和Platinum舞蹈大赛中，他获得独舞铂金奖和同年龄组第二名的成绩。\nJethro还把中国舞动作融入滑冰表演，自编节目成为冰场亮点。Jethro Lee：“学跳舞虽然有时候很辛苦，但我愿意为了让自己变得更好而吃苦。”',
         en: 'Finding rhythm in sweat, discovering self in music.\nEven with a later start, his focused practice earned top placements in solo competitions.\nHe now blends Chinese dance movements into his ice-skating routines, turning every performance into a cultural highlight.'
@@ -204,7 +204,7 @@ export default function App() {
     },
     { 
       name: 'Valerie Lin', 
-      age: 10, 
+      age: 8, 
       quote: {
         cn: '2023年加入DanDance艺术学校，自此与中国舞结下了不解之缘。Valerie同学一路从基础班层层晋升到比赛班，一直对自己严格要求。\n在学习中国舞的过程中，Valerie同学接触过多种不同风格舞蹈，比如身韵舞蹈、敦煌舞蹈、民族舞蹈等，在学习的第二年中主动和吴老师说喜欢跳敦煌舞并想要在敦煌舞中深入学习，所以开始了自己了一对一舞蹈课。\n两年后，凭借一直敦煌独舞，斩获KAR舞蹈大赛中同年龄组第一名和Overall总成绩第一名的好成绩。同年，还获得Showstoppers和Rainbow舞蹈大赛第二名的成绩，和国际桃李杯十佳铂金奖提名。\n现在，Valerie同学依然每周坚持上群舞课和独舞课，虽然比其他同学辛苦一点，到她仍然乐在其中。\nValerie Lin：“中国舞很美，我想把这么优秀的中华文化传承下去。”\n她最喜欢的是敦煌主题作品，因为“每一次挥袖都像在画壁画”。',
          en: 'Valerie joined DanDance Art School in 2023 and has since formed a deep and lasting connection with Chinese dance. Beginning in the foundational level, she steadily advanced through each class level and eventually entered the competition program, consistently holding herself to high standards.\nThroughout her Chinese dance training, Valerie has explored a wide range of styles, including Shenyun (movement and expression), Dunhuang dance, and ethnic folk dance. In her second year of study, she proactively expressed to Ms. Wu her strong interest in Dunhuang dance and her desire to pursue deeper training in this style. As a result, she began one-on-one private lessons focused on Dunhuang dance.\nAfter two years of dedicated study, Valerie achieved outstanding results with her Dunhuang solo, earning 1st Place in her age division and Overall 1st Place at the KAR Dance Competition. In the same year, she also received 2nd Place awards at the Showstoppers and Rainbow Dance Competitions, as well as a Top Ten Platinum Award nomination at the International Taoli Cup.\nToday, Valerie continues to attend both group and solo classes every week. Although her training schedule is more demanding than that of many peers, she finds great joy and fulfillment in the process.\nValerie Lin: “Chinese dance is incredibly beautiful. I hope to carry forward and pass on this outstanding Chinese culture.”'
@@ -214,7 +214,7 @@ export default function App() {
     },
     { 
       name: 'Fiona Duan', 
-      age: 11, 
+      age: 13, 
       quote: {
         cn: '2024年加入DanDance艺术学校，曾经学习芭蕾舞蹈的她和妈妈说：“我不喜欢芭蕾舞，我喜欢古典舞。” 自此，Fiona开始了她的中国舞学习之旅。\n她对中国舞的一招一式表现得非常感兴趣，甚至自己可以通过聆听中国舞的音乐来改编整合成自己的音乐，再运用到自己的独舞剧目中。在学习舞蹈这方面，她潜心钻研，不畏辛苦。\n一年后，Fiona通过独舞课程完成了自己的第一支古典舞《醉清波》，并获得国际桃李杯十佳铂金奖提名。直至今日，她仍然在舞蹈课中积极学习，出现在芝加哥各大专业舞台中。\nFiona Duan：“舞蹈是我生命中的一部分，我永远都不会放弃跳舞这件事。”',
        en: 'In 2024, Fiona joined DanDance Art School. Having previously studied ballet, she once told her mother, “I don’t like ballet—I like classical Chinese dance.” From that moment on, Fiona began her journey in Chinese dance.\nShe shows a deep fascination with every movement and gesture of Chinese dance. Remarkably, she is even able to listen to traditional Chinese dance music, reinterpret and rearrange it into her own compositions, and apply them to her solo performances. In her dance training, Fiona is dedicated, focused, and unafraid of hard work.\nAfter one year of study, Fiona completed her first classical Chinese dance solo, Zui Qing Bo, through the solo training program and received a nomination for the Top Ten Platinum Award at the International Taoli Cup. To this day, she continues to train actively and appears on major professional stages throughout Chicago.\nFiona Duan:“Dance is a part of my life. I will never give up dancing.”'
@@ -647,7 +647,7 @@ export default function App() {
                   student: lang === 'cn' ? '舞者：Valerie' : 'Dancer: Valerie',
                   dance: lang === 'cn' ? '吴丹老师原创作品奖' : 'Original Work Award for Ms. Wu Dan',
                   awardName: lang === 'cn' ? 'KAR/Overall/Rainbow/桃李杯 多料奖项' : 'KAR & Overall & Rainbow & Taoli Cup Awards',
-                  image: '/images/award-2.jpg',
+                  image: '/images/award-6.png',
                 },
                 {
                   title: lang === 'cn' ? '雨霖铃' : 'Rain on the Leaves',
@@ -678,13 +678,8 @@ export default function App() {
                       <Award size={16} className="opacity-60" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-serif text-[var(--sandstone)]">{award.title}</h3>
-                      <p className="mt-2 text-sm opacity-60 leading-relaxed">{award.detail}</p>
-                    </div>
-                    <div className="space-y-1 text-sm font-light text-[var(--sandstone)]/70">
-                      <p>{award.student}</p>
-                      <p>{award.dance}</p>
-                      <p>{award.awardName}</p>
+                      <h3 className="text-xl font-serif text-[var(--sandstone)]">{award.student} · {award.title}</h3>
+                      <p className="mt-2 text-sm opacity-60 leading-relaxed">{[award.detail, award.dance, award.awardName].filter(Boolean).join(' · ')}</p>
                     </div>
                   </div>
                   <div className="overflow-hidden rounded-[1.5rem] bg-[var(--parchment)] sm:w-44 sm:flex-shrink-0">
