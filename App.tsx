@@ -678,7 +678,10 @@ export default function App() {
                       <Award size={16} className="opacity-60" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-serif text-[var(--sandstone)]">{award.student} · {award.title}</h3>
+                      <h3 className="text-xl font-serif text-[var(--sandstone)]">
+                        <span className="block">{award.student}</span>
+                        <span className="block">{award.title}</span>
+                      </h3>
                       <p className="mt-2 text-sm opacity-60 leading-relaxed">{[award.detail, award.dance, award.awardName].filter(Boolean).join(' · ')}</p>
                     </div>
                   </div>
