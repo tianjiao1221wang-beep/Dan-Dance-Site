@@ -25,6 +25,17 @@ import { translations, Language } from './translations';
 // Formspree form ID from https://formspree.io/f/xjgeyapj
 const FORMSPREE_FORM_ID = 'xjgeyapj';
 
+const CLASS_INTEREST_OPTIONS: { value: string; cn: string; en: string }[] = [
+  { value: 'chinese', cn: '中国舞（古典 / 民族）', en: 'Chinese Dance (Classical / Folk)' },
+  { value: 'hiphop-kids-youth', cn: 'Hip Hop（少儿 / 青少年）', en: 'Hip Hop (Kids & Youth)' },
+  { value: 'jazzfunk-kids', cn: 'Jazz Funk 少儿', en: 'Jazz Funk (Kids)' },
+  { value: 'jazzfunk-youth', cn: 'Jazz Funk 青少年', en: 'Jazz Funk (Youth)' },
+  { value: 'kpop-youth', cn: 'K-pop 青少年', en: 'K-pop (Youth)' },
+  { value: 'kpop-adult', cn: 'K-pop 成人', en: 'K-pop (Adult)' },
+  { value: 'elite', cn: '专业集训与比赛', en: 'Advanced & Competition' },
+  { value: 'other', cn: '其他 / 暂未确定', en: 'Other / Not sure yet' },
+];
+
 // --- Helper Components ---
 
 const Section: React.FC<{ children: React.ReactNode; className?: string; id?: string }> = ({ children, className = "", id }) => {
@@ -238,6 +249,7 @@ export default function App() {
     const phone = String(formData.get('phone') ?? '');
     const email = String(formData.get('email') ?? '');
     const message = String(formData.get('message') ?? '');
+    const classInterest = String(formData.get('classInterest') ?? '');
     const subject = lang === 'cn' ? '丹·舞蹈学院咨询' : 'Dan Dance Academy Inquiry';
 
     if (FORMSPREE_FORM_ID) {
@@ -251,6 +263,7 @@ export default function App() {
             _replyto: email || undefined,
             parentName: name,
             childAge,
+            classInterest,
             phone,
             email,
             message,
@@ -270,6 +283,7 @@ export default function App() {
       const body = [
         `${lang === 'cn' ? '家长姓名' : 'Parent Name'}: ${name}`,
         `${lang === 'cn' ? '孩子年龄' : "Child's Age"}: ${childAge}`,
+        `${lang === 'cn' ? '意向课程' : 'Class interest'}: ${classInterest}`,
         `${lang === 'cn' ? '联系电话' : 'Phone'}: ${phone}`,
         `${lang === 'cn' ? '电子邮箱' : 'Email'}: ${email}`,
         `${lang === 'cn' ? '咨询内容' : 'Message'}: ${message}`
@@ -413,7 +427,7 @@ export default function App() {
             <p className="text-base opacity-50 font-light italic text-[var(--lapis-blue)]">{translations.classes.ageGroups[lang]}</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             {[
               { 
                 icon: <BookOpen size={28} />, 
@@ -423,9 +437,23 @@ export default function App() {
                 img: '/images/class-chinese.jpg'
               },
               { 
+                icon: <Sparkles size={28} />, 
+                title: translations.classes.hipHop[lang], 
+                desc: lang === 'cn' ? '新派 Hip Hop 体系，面向少儿与青少年；在律动、乐感与舞台表现中建立自信与风格。' : 'New-school Hip Hop for kids and teens—groove, musicality, and stage confidence.',
+                color: 'var(--lapis-blue)',
+                img: '/images/instructor-zero.png'
+              },
+              { 
+                icon: <Camera size={28} />, 
+                title: translations.classes.jazzFunk[lang], 
+                desc: lang === 'cn' ? '少儿与青少年 Jazz Funk：强调线条、质感与音乐性，在控制与表达之间找到平衡。' : 'Jazz Funk for kids and teens—lines, texture, musicality, and expressive control.',
+                color: 'var(--jade)',
+                img: '/images/instructor-louie.png'
+              },
+              { 
                 icon: <Camera size={28} />, 
                 title: translations.classes.kpop[lang], 
-                desc: lang === 'cn' ? '前沿流行编舞。提升舞台表现力、爆发力与身体协调性，展现现代自信。' : 'Cutting-edge pop choreography. Enhance stage presence, power, and coordination for modern confidence.',
+                desc: lang === 'cn' ? '韩流编舞与表演训练，覆盖青少年与成人班级，打造干净有力的舞台呈现。' : 'K-pop choreography and performance for youth and adult tracks—sharp, powerful staging.',
                 color: 'var(--lapis-blue)',
                 img: '/images/class-kpop.jpg'
               },
@@ -441,7 +469,7 @@ export default function App() {
                 <div className="h-72 overflow-hidden relative">
                   <img
                     src={cls.img}
-                    className={`w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${cls.img === '/images/class-elite.jpg' ? 'object-[70%_center]' : ''}`}
+                    className={`w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${cls.img === '/images/class-elite.jpg' ? 'object-[70%_center]' : cls.img === '/images/instructor-zero.png' ? 'object-[center_25%]' : cls.img === '/images/instructor-louie.png' ? 'object-[center_20%]' : ''}`}
                     alt={cls.title}
                     loading="lazy"
                     decoding="async"
@@ -515,6 +543,46 @@ export default function App() {
                   In addition to dance, Angel has an extensive runway and print modeling background, including participation in the International Fashion Supermodel (IFSM) Hollywood show in 2024. She also holds national pageant titles, including 1st Princess of Miss Chinatown Chicago and 4th Princess at Miss Chinatown USA.`.trim(),
                 color: 'var(--lapis-blue)',
                 img: '/images/instructor-angel.jpg'
+              },
+              {
+                id: 'zero',
+                name: 'Zero',
+                role: lang === 'cn' ? 'Hip Hop 导师 · 少儿与青少年班' : 'HIP HOP INSTRUCTOR · KIDS & YOUTH',
+                desc: lang === 'cn'
+                  ? `我叫 Zero，专攻 New-School Hip Hop，拥有 7 年持续训练与舞台表演经验。
+作为教师，我注重帮助学员在编舞与 Freestyle 两方面同步提升。我相信 Hip Hop 不只是学会动作，更要理解音乐、掌控律动，并以自信与风格表达自己。`.trim()
+                  : `Hi, my name is Zero, and I specialize in New-School Hip-hop. I have 7 years of dance experience, with consistent training and a strong stage performance background.
+As a teacher, I focus on helping students improve in both choreography and freestyle. I believe hip-hop is not only about learning moves, but also about understanding music, controlling groove, and expressing yourself with confidence and style.`.trim(),
+                color: 'var(--lapis-blue)',
+                img: '/images/instructor-zero.png'
+              },
+              {
+                id: 'louie',
+                name: 'Louie',
+                role: lang === 'cn' ? 'Jazz Funk & K-pop 导师 · 青少年 Jazz Funk / 成人 K-pop' : 'JAZZ FUNK & K-POP · YOUTH JAZZ FUNK & ADULT K-POP',
+                desc: lang === 'cn'
+                  ? `资深舞蹈教师，专攻 Jazz Funk 与 House，并在竞技与表演团队中积累 8 年以上的 Hip Hop 与 K-pop 经验。
+教学涵盖各水平，拆解清晰、循序渐进，尤其强调乐感、干净线条与动作完成度、动态质感，以及精致的舞台呈现。
+编舞风格常在「律动流畅、性感而富有表现力」与「高能、力量感」之间切换。`.trim()
+                  : `Experienced dance teacher specialized in jazz funk and house, with 8+ years in hip hop and K-pop through competitive and performance teams.
+Teaches all levels with clear, progressive breakdowns, placing strong emphasis on musicality, clean lines and execution, dynamic textures in movement, and polished performance quality.
+Choreography style usually leans either groovy and flowy (with sexy, expressive vibes) or hype and masculine (high-energy and powerful).`.trim(),
+                color: 'var(--mineral-red)',
+                img: '/images/instructor-louie.png'
+              },
+              {
+                id: 'yuno',
+                name: 'Yuno',
+                role: lang === 'cn' ? 'Jazz Funk 导师 · 少儿小班（4–8 岁）' : 'JAZZ FUNK INSTRUCTOR · KIDS (AGES 4–8)',
+                desc: lang === 'cn'
+                  ? `毕业于伊利诺伊大学厄巴纳-香槟分校（UIUC）舞蹈系。自两岁起接受系统训练，拥有逾十五年舞蹈经历，背景涵盖芭蕾、现代、当代、街舞与 K-pop。
+曾获 YAGP 现代舞团体第一名、TnB K-pop 竞演第一名。教学注重扎实基本功与音乐理解，强调动作质感与舞台表现，引导学员在「控制」与「表达」之间找到平衡；编舞细腻流畅亦干净有力，帮助舞者在力量与情绪之间建立表现力。
+少儿 Jazz Funk 小班：周六 13:00–14:30（4–8 岁）；更多课程筹备中。`.trim()
+                  : `Yuno graduated from the Dance Department at the University of Illinois Urbana-Champaign (UIUC). She has trained systematically since age two and brings 15+ years of experience across ballet, modern, contemporary, hip-hop, and K-pop.
+Awards include 1st place in the YAGP contemporary group category and 1st place in the TnB K-pop competition. Her teaching emphasizes solid fundamentals and musicality, movement texture and stage presence, and a balance between control and expression. Her choreography can be delicate and fluid, or clean and powerful, helping dancers connect power with emotion.
+Kids Jazz Funk small group: Saturdays 1:00–2:30 PM (ages 4–8). More courses coming soon.`.trim(),
+                color: 'var(--jade)',
+                img: '/images/instructor-yuno.png'
               },
               {
                 id: 'ziyu-liu',
@@ -862,7 +930,7 @@ export default function App() {
                  </div>
                  <div className="space-y-2">
                    <p className="text-[11px] uppercase tracking-widest opacity-30 font-bold text-[var(--lapis-blue)]">{lang === 'cn' ? '艺术工坊' : 'Academy'}</p>
-                   <p className="text-lg font-medium">1557 W 33rd Street, Chicago, 60608</p>
+                   <p className="text-lg font-medium">3631 S Halsted St, Chicago, IL 60609</p>
                  </div>
                </div>
                <div className="flex items-center gap-8 group">
@@ -898,7 +966,25 @@ export default function App() {
               </div>
               <div className="space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.childAge[lang]}</label>
-                <input name="childAge" required type="text" inputMode="numeric" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder={lang === 'cn' ? '请输入孩子年龄' : 'Enter age'} />
+                <input name="childAge" required type="text" inputMode="numeric" className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg" placeholder={lang === 'cn' ? '请输入年龄；成人课程可填「成人」' : 'Age, or type Adult for adult classes'} />
+              </div>
+              <div className="md:col-span-2 space-y-3">
+                <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.classInterest[lang]}</label>
+                <select
+                  name="classInterest"
+                  required
+                  className="w-full bg-transparent border-b border-[var(--sandstone)]/30 py-6 px-3 focus:border-[var(--mineral-red)] outline-none transition-all font-light text-lg appearance-none cursor-pointer"
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    {translations.contact.classPlaceholder[lang]}
+                  </option>
+                  {CLASS_INTEREST_OPTIONS.map((opt) => (
+                    <option key={opt.value} value={lang === 'cn' ? opt.cn : opt.en}>
+                      {lang === 'cn' ? opt.cn : opt.en}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="md:col-span-2 space-y-3">
                 <label className="text-[11px] uppercase tracking-[0.4em] font-bold opacity-30 ml-3">{translations.contact.phone[lang]}</label>

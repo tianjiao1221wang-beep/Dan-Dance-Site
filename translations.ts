@@ -6,7 +6,7 @@ export const translations = {
     home: { cn: '首页', en: 'Home' },
     about: { cn: '学馆哲学', en: 'Philosophy' },
     classes: { cn: '舞艺课程', en: 'Classes' },
-     instructors: { cn: '导师风采', en: 'Instructors' },
+    instructors: { cn: '导师风采', en: 'Instructors' },
     awards: { cn: '获奖荣誉', en: 'Awards' },
     students: { cn: '舞者成长', en: 'Student Journey' },
     events: { cn: '艺文活动', en: 'Events' },
@@ -27,8 +27,10 @@ export const translations = {
   classes: {
     title: { cn: '课程设置', en: 'Class Offerings' },
     chineseDance: { cn: '中国舞 (古典/民族)', en: 'Chinese Dance (Classical/Folk)' },
-    kpop: { cn: '流行舞 (K-pop)', en: 'Pop Dance (K-pop)' },
-    ageGroups: { cn: '适龄阶段：4岁 - 青少年', en: 'Ages: 4 - Teens' },
+    hipHop: { cn: 'Hip Hop（少儿 / 青少年）', en: 'Hip Hop (Kids & Youth)' },
+    jazzFunk: { cn: 'Jazz Funk（少儿 / 青少年）', en: 'Jazz Funk (Kids & Youth)' },
+    kpop: { cn: 'K-pop（青少年 / 成人）', en: 'K-pop (Youth & Adult)' },
+    ageGroups: { cn: '适龄阶段：4 岁起，涵盖少儿、青少年与成人', en: 'Ages 4+ — programs for kids, teens, and adults.' },
   },
   instructors: {
     title: { cn: '师资介绍', en: 'Instructor Introductions' },
@@ -41,9 +43,11 @@ export const translations = {
     title: { cn: '与我们联络', en: 'Inquiry & Contact' },
     name: { cn: '家长姓名', en: 'Parent Name' },
     childAge: { cn: '孩子年龄', en: "Child's Age" },
+    classInterest: { cn: '意向课程', en: 'Class Interest' },
     phone: { cn: '联系电话', en: 'Phone Number' },
     email: { cn: '电子邮箱', en: 'Email' },
     message: { cn: '您的咨询内容', en: 'Your Inquiry' },
     submit: { cn: '提交咨询', en: 'Submit Inquiry' },
+    classPlaceholder: { cn: '请选择课程方向', en: 'Select a program' },
   }
 };
