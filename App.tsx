@@ -448,7 +448,7 @@ export default function App() {
                 title: translations.classes.jazzFunk[lang], 
                 desc: lang === 'cn' ? '少儿与青少年 Jazz Funk：强调线条、质感与音乐性，在控制与表达之间找到平衡。' : 'Jazz Funk for kids and teens—lines, texture, musicality, and expressive control.',
                 color: 'var(--jade)',
-                img: '/images/class-jazzfunk.jpg'
+                img: '/images/class-jazzfunk.png'
               },
               { 
                 icon: <Camera size={28} />, 
@@ -469,7 +469,7 @@ export default function App() {
                 <div className="h-72 overflow-hidden relative">
                   <img
                     src={cls.img}
-                    className={`w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${cls.img === '/images/class-elite.jpg' || cls.img === '/images/class-jazzfunk.jpg' ? 'object-[70%_center]' : ''}`}
+                    className={`w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${cls.img === '/images/class-elite.jpg' || cls.img === '/images/class-jazzfunk.png' ? 'object-[70%_center]' : ''}`}
                     alt={cls.title}
                     loading="lazy"
                     decoding="async"
