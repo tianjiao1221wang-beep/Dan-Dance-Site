@@ -2,3 +2,7 @@ node_modules/
 
 # Large video files (GitHub limit 100MB)
 public/event/gala-2025.mp4
+
+# Vite copies public/ into dist/ on build — do not commit generated media (breaks GitHub push)
+dist/event/
+dist/images/
