@@ -556,22 +556,6 @@ export default function App() {
                 img: '/images/instructor-angel.jpg'
               },
               {
-                id: 'Fengyuan-liu',
-                name: lang === 'cn' ? '刘逢源' : 'Fengyuan Liu',
-                role: lang === 'cn' ? '中国舞助教' : 'CHINESE DANCE TEACHING ASSISTANT',
-                desc: lang === 'cn'
-                 ? `前国家二级健美操运动员，曾荣获由国家体育总局科教司主办的全国运动联盟操舞联赛（有氧舞蹈类）个人第一名、团体第一名。曾在第十四届中华人民共和国大学生运动会排球赛、篮球赛等国家级大型体育赛事中担任啦啦队队长，并于开幕式演出中担任领舞，具备丰富的大型舞台演出与团队编排经验。
-                 退役后专注于舞蹈的系统化、专业化训练，通过北京舞蹈学院中国舞等级考试第13级（最高级），并获得优秀成绩。曾参加舞蹈类高水平艺术团（艺术特长生）选拔考试，获得清华大学、中山大学等高校20分降分录取资格，并被多所重点院校认定为艺术特长生。参演舞蹈作品《额尔古纳河》，在全国大学生艺术展演（舞蹈表演组）中荣获二等奖。
-                 就读于普渡大学期间，担任中国学生会主席，并担任西北印第安纳华人春晚导演。两次受邀参加普渡大学国际文化节演出，表演中国舞独舞《夜泊秦淮》；参与社区中学家庭开放日文化交流演出；参演大芝加哥地区华人国庆晚会开场舞《草原上升起不落的太阳》。此外，参加2025年芝加哥华埠小姐选美比赛，并于决赛中表演中国舞《彩云之南》。
-                 导师具备扎实的舞蹈基本功、良好的身体控制与舞感，以及出色的舞台表现与艺术表达能力。教学过程中注重技术训练与情感表达并重，强调循序渐进与因材施教，致力于帮助学生提升舞蹈表现力，培养自信气质与综合艺术素养。`.trim()
-                  : ` A former National Level-II Aerobics Athlete, the instructor has won First Place (Individual) and First Place (Group) in the National Aerobics & Dance League (Aerobic Dance Category) organized by the Department of Science and Education of the General Administration of Sport of China. She has served as cheerleading team captain at national-level sporting events, including the 14th National University Games of the People’s Republic of China (volleyball and basketball competitions), and performed as a lead dancer in opening ceremony productions, gaining extensive experience in large-scale stage performances and team choreography.
-                 After retiring from competitive athletics, she dedicated herself to systematic and professional dance training. She successfully passed the Beijing Dance Academy Chinese Dance Level 13 Examination (highest level) with an Excellent rating. She later participated in high-level dance troupe (artistic talent) selection exams and received 20-point admission score reductions from prestigious universities such as Tsinghua University and Sun Yat-sen University, as well as recognition as an artistic talent by multiple key universities. She performed in the dance work “The Erguna River,” which won Second Prize in the National College Students’ Art Exhibition (Dance Performance Category).
-                 During her studies at Purdue University, she served as President of the Chinese Students Association and worked as Director of the Northwest Indiana Chinese New Year Gala. She was invited twice to perform at Purdue University’s International Cultural Festival, presenting the Chinese dance solo “Night Mooring at Qinhuai.” She also participated in cultural exchange performances at local middle school family open houses and performed in the opening dance “An Ever-Rising Sun Over the Grasslands” at the Greater Chicago Chinese National Day Gala. In addition, she competed in the 2025 Miss Chinatown Chicago Pageant, performing the Chinese dance “Colorful Clouds of the South” in the final round.
-                 The instructor possesses a strong technical foundation, excellent body control and musicality, as well as outstanding stage presence and expressive ability. In teaching, she emphasizes a balanced integration of technical precision and emotional expression, adopts a progressive and individualized approach, and is committed to helping students enhance their performance quality while developing confidence, elegance, and comprehensive artistic literacy. `.trim(),
-                color: 'var(--sandstone)',
-                img: '/images/instructor-fengyuan.jpg'
-              },
-              {
                 id: 'zero',
                 name: 'Zero',
                 role: lang === 'cn' ? 'Hip Hop 导师 · 少儿与青少年班' : 'HIP HOP INSTRUCTOR · KIDS & YOUTH',
