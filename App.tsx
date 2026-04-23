@@ -237,9 +237,20 @@ export default function App() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
+      // Direct nav + smooth scroll can miss IntersectionObserver in some cases; sections stay opacity:0 without .visible
+      element.classList.add('visible');
       element.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  useEffect(() => {
+    const id = window.location.hash.replace(/^#/, '');
+    if (!id) return;
+    requestAnimationFrame(() => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('visible');
+    });
+  }, []);
   const handleContactSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
